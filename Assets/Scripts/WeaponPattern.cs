@@ -5,9 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Weapon Pattern", menuName = "Projectile Assets/Create Weapon Pattern")]
 public class WeaponPattern : ScriptableObject
 {
-    public float projectileSpeed;
     public int bulletsPerShot;
-    public float angleSpread;
+    //IEnumerator inside Shooter?
     public float rateOfFire;
-    public float timeBetweenShots;
+    //cooldown inside Shooter
 }

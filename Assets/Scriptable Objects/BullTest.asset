@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbe33a4ae73cadd4cbb51b1653f36684, type: 3}
   m_Name: BullTest
   m_EditorClassIdentifier: 
+  projectileSpeed: 25
+  angleSpread: 0
   bulletShape: 0
   bulletColor: {r: 0, g: 0, b: 0, a: 0}
   damageDealt: 0

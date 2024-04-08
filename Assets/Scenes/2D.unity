@@ -548,6 +548,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultBulletPrefab: {fileID: 2196239348347350715, guid: dda9d553a6e7f104ba5edda1d59df681, type: 3}
+  projectile: {fileID: 0}
+  projectilesPerBurst: 5
+  angleSpread: 135
+  startingDistance: 0.1
+  burstCount: 5
+  timeBetweenBursts: 1
+  restTime: 0.5
+  stagger: 1
+  oscillate: 1
   projectileData:
     weaponPattern: {fileID: 11400000, guid: 9cfdc6bd65343594d9585e5f77adaa5e, type: 2}
     bulletType: {fileID: 11400000, guid: 4992c43d09f983e4592234db592a771b, type: 2}
