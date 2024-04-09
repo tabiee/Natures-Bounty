@@ -6,11 +6,9 @@ using UnityEngine.InputSystem;
 public class AimHandler : MonoBehaviour
 {
     public static AimHandler instance;
-
     [SerializeField] private float rotationSpeed = 15f;
 
     private bool isHeld;
-    private float cooldownWaitTime = 0.0f;
     private void Awake()
     {
         if (instance != null)

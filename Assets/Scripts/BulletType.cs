@@ -6,16 +6,18 @@ using UnityEngine;
 public class BulletType : ScriptableObject
 {
     public float projectileSpeed;
-    //inside Projectile
-    public float angleSpread;
-    //inside Projectile
-    public float bulletShape;
-    //inside Projectile
-    public Color bulletColor;
-    //inside Projectile
+    //how fast the proj moves
+    public float projectileRange = 1f;
+    //how long until the bullet is destroyed
+    public Vector3 projectileShape;
+    //how big and/or what shape the bullet is
+    public Sprite projectileSprite;
+    //the sprite
+    public Color projectileColor;
+    //the color
     public int damageDealt;
-    //inside Projectile
+    //how much dmg it does on hit
 
     //public EffectOnHit effectOnHit;
-    //inside Projectile
+    //what it does when hitting an enemy/player
 }

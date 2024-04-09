@@ -5,10 +5,6 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public ProjectileData projectileData;
-
-    public float bulletLife = 1f;
-    public float rotation = 0f;
-
     public Vector3 direction;
     private void OnCollisionEnter(Collision collision)
     {
@@ -17,16 +13,16 @@ public class Projectile : MonoBehaviour
 
     private void Start()
     {
-        Invoke("DestroyThis", 3f);
+        float projectileLifetime = projectileData.projectileRange;
+        Invoke("DestroyThis", projectileLifetime);
     }
-
     private void Update()
     {
         MoveProjectile();
     }
     void MoveProjectile()
     {
-        transform.Translate(direction * projectileData.bulletType.projectileSpeed * Time.deltaTime);
+        transform.Translate(direction.normalized * projectileData.projectileSpeed * Time.deltaTime);
     }
     void DestroyThis()
     {

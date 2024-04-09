@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerShooter : Shooter
 {
     public static PlayerShooter instance;
-    public ProjectileData projectileData;
     private void Awake()
     {
         if (instance != null)
@@ -18,7 +17,7 @@ public class PlayerShooter : Shooter
     }
     public void FireBullet()
     {
-        Shoot(projectileData);
+        Shoot(transform.rotation);
         Debug.Log("pew! I shot a bullet");
     }
 }
@@ -32,3 +31,6 @@ public class PlayerShooter : Shooter
 //(do i need a shooter then?)
 //playershooter and enemyshooter provide shooter and projectile with data on how they shoot the bullet
 //eg. player shoots fast with small bullets -> Shooter: fireRate = 0.1f, Projectile: bulletSize = 0.25f
+
+//for player
+//wep: projspeed, firerate | bullet: size, damage, range
