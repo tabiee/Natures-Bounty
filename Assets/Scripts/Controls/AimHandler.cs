@@ -7,8 +7,6 @@ public class AimHandler : MonoBehaviour
 {
     public static AimHandler instance;
     [SerializeField] private float rotationSpeed = 15f;
-
-    private bool isHeld;
     private void Awake()
     {
         if (instance != null)
@@ -22,7 +20,6 @@ public class AimHandler : MonoBehaviour
     private void Update()
     {
         HandleAiming();
-        Shoot();
     }
     private void HandleAiming()
     {
@@ -33,18 +30,5 @@ public class AimHandler : MonoBehaviour
         Quaternion targetRotation = Quaternion.Euler(0, 0, angle);
 
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-    }
-
-    void OnShoot(InputValue inputValue)
-    {
-        isHeld = inputValue.isPressed;
-    }
-    void Shoot()
-    {
-        if (isHeld)
-        {
-            PlayerShooter.instance.FireBullet();
-            Debug.Log("Pew!");
-        }
     }
 }

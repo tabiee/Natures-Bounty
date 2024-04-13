@@ -94,13 +94,15 @@ GameObject:
   m_Component:
   - component: {fileID: 2820791601483362673}
   - component: {fileID: 4821544715079877254}
-  - component: {fileID: 7416942096810621343}
   - component: {fileID: 6225303619849808720}
+  - component: {fileID: 7416942096810621343}
   - component: {fileID: 6075114882038999707}
-  - component: {fileID: 3624830318697108874}
+  - component: {fileID: 5219808819034201701}
+  - component: {fileID: 1377324654850338554}
+  - component: {fileID: 2698209249224769364}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -148,19 +150,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &7416942096810621343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1373539782710472097}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe550145d4f5c734ca0bd1033161580b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 15
 --- !u!114 &6225303619849808720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,6 +180,20 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &7416942096810621343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373539782710472097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe550145d4f5c734ca0bd1033161580b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 15
+  rb: {fileID: 0}
 --- !u!114 &6075114882038999707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,7 +207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 15
---- !u!114 &3624830318697108874
+--- !u!114 &5219808819034201701
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -213,12 +216,36 @@ MonoBehaviour:
   m_GameObject: {fileID: 1373539782710472097}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70032fea897cce84bb7c9e8d1a9cd910, type: 3}
+  m_Script: {fileID: 11500000, guid: 4770a5c4cfaf51940a03dc06fe4cf578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 2196239348347350715, guid: dda9d553a6e7f104ba5edda1d59df681, type: 3}
   projectileData: {fileID: 11400000, guid: 230ca37117f91794eafa74dd32b8380c, type: 2}
-  isShooting: 0
-  isEnemy: 1
-  startingDistance: 0.1
-  playerPosition: {fileID: 0}
+  projectileSpawner: {fileID: 0}
+  rollForward: {fileID: 0}
+--- !u!114 &1377324654850338554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373539782710472097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07f2693600d1bdd478ce0f2b6eeb7936, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2698209249224769364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373539782710472097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 876a55812fd589e4796ad03a2f0a1c5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rollForce: 1200
+  rollDuration: 0.4
+  rollCooldown: 3

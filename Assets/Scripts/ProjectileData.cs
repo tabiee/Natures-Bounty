@@ -2,46 +2,56 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Bullet Type", menuName = "Projectile Assets/Create Projectile Data")]
+[CreateAssetMenu(fileName = "Projectile", menuName = "Projectile Assets/Create Projectile Data")]
 public class ProjectileData : ScriptableObject
 {
-    //public WeaponPattern weaponPattern;
-    //public BulletType bulletType;
+    [Tooltip("Which prefab will be instantiated inside ProjectileSpawner.")]
+    public GameObject projectilePrefab;
 
-    public float rateOfFire;
-    //time between each burst bullet in coroutine
+    [Tooltip("The projectile class of each instance of the prefab.")]
+    public Projectile projectile;
 
-    //note: if there's more than 1 projectile, either increase angleSpread or turn on stagger
-
-    public int projectilesPerBurst = 1;
-    //how many projectiles get instantiated in coroutine
-    [Range(0, 359)] public float angleSpread;
-    //how big the cone of bullet spread is
-
-    //note: prefered to be only on enemies
-    //note: if burstCount is 1, keep timeBetweenBursts at 0
-
-    public int burstCount = 1;
-    //how many bursts per cooldown
-    public float timeBetweenBursts = 0f;
-    //cooldown between each burst
-
-    public bool stagger;
-    //delay between each bullet in a burst
-    public bool oscillate;
-    //back and forth motion affected by angleSpread
+    [Tooltip("Time between each projectile/all coroutine loops.")]
+    public float rateOfFire = 1f;
 
     //===========================
 
-    public float projectileSpeed;
-    //how fast the proj moves
-    public float projectileRange = 1f;
-    //how long until the bullet is destroyed
-    public Vector3 projectileShape;
-    //how big and/or what shape the bullet is
-    public int damageDealt;
-    //how much dmg it does on hit
+    [Header("If there's more than 1 projectile, \n either increase angleSpread or turn on stagger")]
+    [Tooltip("How many projectiles get instantiated in a coroutine loop.")]
+    public int projectilesPerBurst = 1;
 
-    //public EffectOnHit effectOnHit;
-    //what it does when hitting an enemy/player
+    [Tooltip("How big the cone of projectile spread is.")]
+    [Range(0, 359)] public float angleSpread;
+
+    //===========================
+
+    [Header("Bursts prefered to be only on enemies \n If burstCount is 1, keep timeBetweenBursts at 0")]
+    [Tooltip("How many times the coroutine loops per rateOfFire shot.")]
+    public int burstCount = 1;
+
+    [Tooltip("Cooldown between each coroutine loop.")]
+    public float timeBetweenBursts = 0f;
+
+    [Tooltip("Delay between each bullet in a loop.")]
+    public bool stagger;
+
+    [Tooltip("Back and forth motion affected by angleSpread.")]
+    public bool oscillate;
+
+    //===========================
+
+    [Tooltip("How fast the projectile moves.")]
+    public float projectileSpeed = 1f;
+
+    [Tooltip("How long until the bullet is destroyed.")]
+    public float projectileRange = 1f;
+
+    [Tooltip("How big and/or what shape the bullet is.")]
+    public Vector3 projectileShape = new Vector3(1f, 1f, 1f);
+
+    [Tooltip("How much damage it does on hit.")]
+    public int damageDealt = 1;
+
+    [Tooltip("What it does when colliding with entity/object.")]
+    public EffectOnHit effectOnHit;
 }

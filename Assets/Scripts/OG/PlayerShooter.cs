@@ -15,7 +15,7 @@ public class PlayerShooter : Shooter
         }
         instance = this;
     }
-    public void FireBullet()
+    public void Execute()
     {
         Shoot(transform.rotation);
         Debug.Log("pew! I shot a bullet");

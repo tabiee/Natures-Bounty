@@ -11,11 +11,11 @@ public class EnemyShooter : Shooter
         targetPosition = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    private void LateUpdate()
+    private void Update()
     {
-        FireBullet();
+        Execute();
     }
-    public void FireBullet()
+    public void Execute()
     {
         Shoot(GetTargetPosition());
         Debug.Log("pew! I shot a bullet");

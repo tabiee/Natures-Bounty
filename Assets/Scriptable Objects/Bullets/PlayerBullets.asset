@@ -10,16 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37d145545f1dbd341bbb2fd8bd1bc749, type: 3}
-  m_Name: Bullet Type
+  m_Name: PlayerBullets
   m_EditorClassIdentifier: 
-  rateOfFire: 1
+  projectilePrefab: {fileID: 2196239348347350715, guid: dda9d553a6e7f104ba5edda1d59df681, type: 3}
+  projectile: {fileID: 1474996939730525233, guid: dda9d553a6e7f104ba5edda1d59df681, type: 3}
+  rateOfFire: 0.25
   projectilesPerBurst: 1
-  angleSpread: 51
+  angleSpread: 0
   burstCount: 1
   timeBetweenBursts: 0
   stagger: 0
   oscillate: 0
-  projectileSpeed: 0
-  projectileRange: 1
-  projectileShape: {x: 0, y: 0, z: 0}
-  damageDealt: 0
+  projectileSpeed: 4
+  projectileRange: 5
+  projectileShape: {x: 1, y: 1, z: 1}
+  damageDealt: 1
+  effectOnHit: {fileID: 0}

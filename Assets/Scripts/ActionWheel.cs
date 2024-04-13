@@ -2,10 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActionWheel : MonoBehaviour
+//invoker
+public class ActionWheel
 {
-    public void Shoot()
-    {
+    IAction _onAction;
 
+    public ActionWheel(IAction onAction)
+    {
+        _onAction = onAction;
+    }
+
+    public void UseAction()
+    {
+        _onAction.Execute();
     }
 }

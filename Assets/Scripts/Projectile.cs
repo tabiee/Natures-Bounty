@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public ProjectileData projectileData;
-    public Vector3 direction;
+    //movement itself aka move forward in direction it is facing
+    //time it takes to disappear
+    //effects on hit
+
+    [HideInInspector] public ProjectileData projectileData;
+    [HideInInspector] public Vector3 direction;
+    [HideInInspector] public ObjectPool projectilePool;
     private void OnCollisionEnter(Collision collision)
     {
         //ashdajskdjaskdasdksa
@@ -26,6 +31,8 @@ public class Projectile : MonoBehaviour
     }
     void DestroyThis()
     {
-        Destroy(this.gameObject);
+        gameObject.SetActive(false);
+        projectilePool.ReturnObject(gameObject);
+        //Destroy(this.gameObject);
     }
 }

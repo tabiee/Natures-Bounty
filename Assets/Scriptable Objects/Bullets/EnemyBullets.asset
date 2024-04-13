@@ -12,14 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37d145545f1dbd341bbb2fd8bd1bc749, type: 3}
   m_Name: EnemyBullets
   m_EditorClassIdentifier: 
-  rateOfFire: 3
-  projectilesPerBurst: 10
-  angleSpread: 0
-  burstCount: 3
-  timeBetweenBursts: 1
+  projectilePrefab: {fileID: 2196239348347350715, guid: 338870f5a7859c449b14fa1b08d8be56, type: 3}
+  projectile: {fileID: 1474996939730525233, guid: 338870f5a7859c449b14fa1b08d8be56, type: 3}
+  rateOfFire: 2
+  projectilesPerBurst: 7
+  angleSpread: 90
+  burstCount: 1
+  timeBetweenBursts: 0
   stagger: 0
   oscillate: 0
   projectileSpeed: 2
-  projectileRange: 25
-  projectileShape: {x: 0, y: 0, z: 0}
-  damageDealt: 0
+  projectileRange: 5
+  projectileShape: {x: 1, y: 1, z: 1}
+  damageDealt: 1
+  effectOnHit: {fileID: 11400000, guid: 9beb1202d2479a249b2b24934042b6fa, type: 2}

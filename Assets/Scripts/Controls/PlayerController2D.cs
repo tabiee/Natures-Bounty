@@ -9,7 +9,7 @@ public class PlayerController2D : MonoBehaviour
 
     [SerializeField] private float movementSpeed = 5f;
 
-    private Rigidbody2D rb;
+    [HideInInspector] public Rigidbody2D rb;
     private Vector2 movementInput;
     private Vector2 smoothedMovementInput;
     private Vector2 movementInputSmoothVelocity;
