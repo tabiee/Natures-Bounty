@@ -6,12 +6,10 @@ using UnityEngine.InputSystem;
 //client
 public class Player : MonoBehaviour
 {
-    //pretend there is player logic here wew
-
     public static Player instance;
     [SerializeField] private ProjectileData projectileData;
     [SerializeField] private ProjectileSpawner projectileSpawner;
-    [SerializeField] private DodgeAbility rollForward;
+    [SerializeField] private DodgeRoll dodgeRoll;
 
     private ActionWheel _actionWheel;
     private bool isShootHeld;
@@ -39,10 +37,10 @@ public class Player : MonoBehaviour
     {
         if (isShootHeld)
         {
-            IAction shootAction = new Shoot(projectileData, transform.rotation, projectileSpawner);
+            IAction shootAction = new ShootAction(projectileData, transform.rotation, projectileSpawner);
             _actionWheel = new ActionWheel(shootAction);
             _actionWheel.UseAction();
-            Debug.Log("Pew!");
+            //Debug.Log("Pew!");
         }
     }
     void OnDodge(InputValue inputValue)
@@ -53,10 +51,10 @@ public class Player : MonoBehaviour
     {
         if (isDodgeHeld)
         {
-            IAction action = new Dodge(rollForward);
+            IAction action = new DodgeAction(dodgeRoll);
             _actionWheel = new ActionWheel(action);
             _actionWheel.UseAction();
-            Debug.Log("Dodge!");
+            //Debug.Log("Dodge!");
         }
     }
 }

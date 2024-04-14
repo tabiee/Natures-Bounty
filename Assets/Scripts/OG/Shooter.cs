@@ -14,7 +14,7 @@ public abstract class Shooter : MonoBehaviour
     protected void Start()
     {
         projectile = projectilePrefab.GetComponent<Projectile>();
-        projectile.projectileData = projectileData;
+        //projectile.projectileData = projectileData;
     }
     protected void Shoot(Quaternion targetRot)
     {
@@ -56,12 +56,11 @@ public abstract class Shooter : MonoBehaviour
                 bullet = Instantiate(projectilePrefab, pos, Quaternion.identity);
                 bullet.transform.rotation = targetRotation;
 
-        //note: for the love of FUCK do not touch this because it makes this damn game engine do somersaults
                 if (bullet.TryGetComponent(out Projectile proj))
                 {
                     proj.direction = bullet.transform.position - transform.position;
                 }
-         //note:^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
                 currentAngle += angleStep;
 
                 if (projectileData.stagger) {

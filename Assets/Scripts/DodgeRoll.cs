@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //receiver
-public class DodgeAbility : MonoBehaviour
+public class DodgeRoll : MonoBehaviour
 {
+    [SerializeField] private GameObject dodgeParticle;
     public float rollForce = 2f;
     public float rollDuration = 1f;
     public float rollCooldown = 3f;
@@ -19,7 +20,7 @@ public class DodgeAbility : MonoBehaviour
             PlayerController2D.instance.rb.AddForce(direction * rollForce, ForceMode2D.Force);
         }
     }
-    public void DodgeRoll()
+    public void Dodge()
     {
         if (!isDodging && !isOnCooldown)
         {
@@ -29,6 +30,8 @@ public class DodgeAbility : MonoBehaviour
     void StartDodging()
     {
         isDodging = true;
+        dodgeParticle.SetActive(true);
+
         StartCoroutine(DodgingTimer());
         StartCoroutine(StartCooldown());
     }
@@ -36,6 +39,7 @@ public class DodgeAbility : MonoBehaviour
     {
         yield return new WaitForSeconds(rollDuration);
         isDodging = false;
+        dodgeParticle.SetActive(false);
     }
 
     IEnumerator StartCooldown()

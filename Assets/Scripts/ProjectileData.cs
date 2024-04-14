@@ -32,7 +32,7 @@ public class ProjectileData : ScriptableObject
     [Tooltip("Cooldown between each coroutine loop.")]
     public float timeBetweenBursts = 0f;
 
-    [Tooltip("Delay between each bullet in a loop.")]
+    [Tooltip("Delay between each projectile in a loop.")]
     public bool stagger;
 
     [Tooltip("Back and forth motion affected by angleSpread.")]
@@ -43,8 +43,11 @@ public class ProjectileData : ScriptableObject
     [Tooltip("How fast the projectile moves.")]
     public float projectileSpeed = 1f;
 
-    [Tooltip("How long until the bullet is destroyed.")]
-    public float projectileRange = 1f;
+    [Tooltip("How long until the projectile is destroyed.")]
+    public float projectileLifetime = 1f;
+
+    [Tooltip("How far the entity is pushed when hit by the projectile.")]
+    public float projectileKnockback = 1f;
 
     [Tooltip("How big and/or what shape the bullet is.")]
     public Vector3 projectileShape = new Vector3(1f, 1f, 1f);

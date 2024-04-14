@@ -55,17 +55,16 @@ public class ProjectileSpawner : MonoBehaviour
 
             for (int j = 0; j < projectileData.projectilesPerBurst; j++)
             {
-
                 Vector2 pos = FindProjectileSpawnLoc(currentAngle);
                 bullet = projectilePool.GetObject();
-                //bullet = Instantiate(projectilePrefab, pos, Quaternion.identity);
                 bullet.transform.position = pos;
-                bullet.transform.rotation = targetRotation;
+                //bullet.transform.rotation = targetRotation;
 
                 if (bullet.TryGetComponent(out Projectile proj))
                 {
-                    proj.projectileData = projectileData;
+                    proj.projectileSpeed = projectileData.projectileSpeed;
                     proj.direction = bullet.transform.position - transform.position;
+                    StartCoroutine(proj.LaunchAndDisableAfterDelay(projectileData.projectileLifetime, targetRotation));
                 }
 
                 currentAngle += angleStep;

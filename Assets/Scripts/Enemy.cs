@@ -20,10 +20,10 @@ public class Enemy : MonoBehaviour
     }
     void Shoot(Quaternion targetRotation)
     {
-        IAction shootAction = new Shoot(projectileData, targetRotation, projectileSpawner);
+        IAction shootAction = new ShootAction(projectileData, targetRotation, projectileSpawner);
         _actionWheel = new ActionWheel(shootAction);
         _actionWheel.UseAction();
-        Debug.Log("Pew!");
+        //Debug.Log("Pew!");
     }
     private Quaternion GetTargetPosition()
     {
@@ -34,7 +34,6 @@ public class Enemy : MonoBehaviour
 
         targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
-        //Debug.Log("tarRot: " + targetRotation);
         return targetRotation;
     }
 }

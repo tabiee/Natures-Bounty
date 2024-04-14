@@ -8,31 +8,42 @@ public class Projectile : MonoBehaviour
     //time it takes to disappear
     //effects on hit
 
-    [HideInInspector] public ProjectileData projectileData;
+    //[HideInInspector] public int damageDealt;
+    [HideInInspector] public float projectileSpeed;
     [HideInInspector] public Vector3 direction;
     [HideInInspector] public ObjectPool projectilePool;
-    private void OnCollisionEnter(Collision collision)
+    //[HideInInspector] public EffectOnHit effectOnHit;
+    [SerializeField] private Rigidbody2D rb;
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        //ashdajskdjaskdasdksa
+        //apply damage and effects here
+        //if (!collision.gameObject.CompareTag("Projectile"))
+        //{
+        //    Debug.Log("boom collision!");
+        //    StopCoroutine("LaunchAndDisableAfterDelay");
+        //    ReturnToPool();
+        //}
+    }
+    public IEnumerator LaunchAndDisableAfterDelay(float delay, Quaternion rotation)
+    {
+        rb.velocity = Vector2.zero;
+        transform.rotation = rotation;
+
+        yield return null;
+
+        rb.AddRelativeForce(direction.normalized * projectileSpeed, ForceMode2D.Impulse);
+
+        yield return new WaitForSeconds(delay);
+
+        ReturnToPool();
     }
 
-    private void Start()
-    {
-        float projectileLifetime = projectileData.projectileRange;
-        Invoke("DestroyThis", projectileLifetime);
-    }
-    private void Update()
-    {
-        MoveProjectile();
-    }
-    void MoveProjectile()
-    {
-        transform.Translate(direction.normalized * projectileData.projectileSpeed * Time.deltaTime);
-    }
-    void DestroyThis()
+    private void ReturnToPool()
     {
         gameObject.SetActive(false);
-        projectilePool.ReturnObject(gameObject);
-        //Destroy(this.gameObject);
+        if (projectilePool != null)
+        {
+            projectilePool.ReturnObject(gameObject);
+        }
     }
 }
