@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     [SerializeField] private ProjectileData projectileData;
     [SerializeField] private ProjectileSpawner projectileSpawner;
     [SerializeField] private DodgeRoll dodgeRoll;
+    [SerializeField] private Transform shooterPosition;
 
     private ActionWheel _actionWheel;
     private bool isShootHeld;
@@ -24,6 +25,10 @@ public class Player : MonoBehaviour
         }
         instance = this;
     }
+    private void Start()
+    {
+        shooterPosition = this.transform;
+    }
     private void Update()
     {
         Shoot();
@@ -37,7 +42,7 @@ public class Player : MonoBehaviour
     {
         if (isShootHeld)
         {
-            IAction shootAction = new ShootAction(projectileData, transform.rotation, projectileSpawner);
+            IAction shootAction = new ShootAction(projectileData, transform.rotation, shooterPosition, projectileSpawner);
             _actionWheel = new ActionWheel(shootAction);
             _actionWheel.UseAction();
             //Debug.Log("Pew!");

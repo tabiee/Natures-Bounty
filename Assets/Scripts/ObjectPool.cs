@@ -4,20 +4,36 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-    public GameObject prefab;
-    private Queue<GameObject> pool = new Queue<GameObject>();
+    public static ObjectPool instance;
+    private Dictionary<GameObject, Queue<GameObject>> pooledObjects = new Dictionary<GameObject, Queue<GameObject>>();
 
-    public GameObject GetObject()
+    private void Awake()
     {
-        if (pool.Count > 0)
+        if (instance != null)
         {
-            GameObject obj = pool.Dequeue();
+            Destroy(this.gameObject);
+
+            Debug.LogWarning("There was more than one ObjectPool in the scene");
+        }
+        instance = this;
+    }
+
+    public GameObject GetObject(GameObject prefab)
+    {
+        if (pooledObjects.ContainsKey(prefab) && pooledObjects[prefab].Count > 0)
+        {
+            GameObject obj = pooledObjects[prefab].Dequeue();
             obj.SetActive(true);
             return obj;
         }
         else
         {
             GameObject obj = Instantiate(prefab);
+            if (!pooledObjects.ContainsKey(prefab))
+            {
+                pooledObjects[prefab] = new Queue<GameObject>();
+            }
+
             return obj;
         }
     }
@@ -25,6 +41,14 @@ public class ObjectPool : MonoBehaviour
     public void ReturnObject(GameObject obj)
     {
         obj.SetActive(false);
-        pool.Enqueue(obj);
+
+        foreach (var kvp in pooledObjects)
+        {
+            if (kvp.Value.Contains(obj))
+            {
+                kvp.Value.Enqueue(obj);
+                return;
+            }
+        }
     }
 }

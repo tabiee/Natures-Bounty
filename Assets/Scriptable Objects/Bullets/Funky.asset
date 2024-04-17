@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37d145545f1dbd341bbb2fd8bd1bc749, type: 3}
+  m_Name: Funky
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 2196239348347350715, guid: 338870f5a7859c449b14fa1b08d8be56, type: 3}
+  projectile: {fileID: 1474996939730525233, guid: 338870f5a7859c449b14fa1b08d8be56, type: 3}
+  rateOfFire: 3
+  projectilesPerBurst: 60
+  angleSpread: 359
+  burstCount: 5
+  timeBetweenBursts: 0.2
+  stagger: 0
+  oscillate: 0
+  projectileSpeed: 5
+  projectileLifetime: 8
+  projectileKnockback: 1
+  projectileShape: {x: 1, y: 1, z: 1}
+  damageDealt: 1
+  effectOnHit: {fileID: 11400000, guid: 9beb1202d2479a249b2b24934042b6fa, type: 2}

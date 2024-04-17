@@ -7,12 +7,14 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private ProjectileData projectileData;
     [SerializeField] private ProjectileSpawner projectileSpawner;
+    [SerializeField] private Transform shooterPosition;
 
     private ActionWheel _actionWheel; 
     private Transform targetPosition;
     private void Start()
     {
         targetPosition = GameObject.FindGameObjectWithTag("Player").transform;
+        shooterPosition = this.transform;
     }
     private void Update()
     {
@@ -20,7 +22,7 @@ public class Enemy : MonoBehaviour
     }
     void Shoot(Quaternion targetRotation)
     {
-        IAction shootAction = new ShootAction(projectileData, targetRotation, projectileSpawner);
+        IAction shootAction = new ShootAction(projectileData, targetRotation, shooterPosition, projectileSpawner);
         _actionWheel = new ActionWheel(shootAction);
         _actionWheel.UseAction();
         //Debug.Log("Pew!");
@@ -29,7 +31,7 @@ public class Enemy : MonoBehaviour
     {
         Quaternion targetRotation;
 
-        Vector3 dir = (targetPosition.position - transform.position).normalized;
+        Vector3 dir = (targetPosition.position - shooterPosition.position).normalized;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
         targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));

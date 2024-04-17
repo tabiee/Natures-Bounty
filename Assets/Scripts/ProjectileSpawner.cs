@@ -5,32 +5,25 @@ using UnityEngine;
 //receiver
 public class ProjectileSpawner : MonoBehaviour
 {
-    private ObjectPool projectilePool;
     private ProjectileData projectileData;
-    private Projectile projectile;
     private Quaternion targetRotation;
+    private Transform shooterPosition;
     private float startingDistance = 0.1f;
     private bool isShooting;
-    private void Awake()
-    {
-        projectilePool = GetComponent<ObjectPool>();
-    }
-    public void StartShooting(ProjectileData projData, Quaternion targetRot)
+    public void StartShooting(ProjectileData projData, Quaternion targetRot, Transform shooterPos)
     {
         if (!isShooting)
         {
-            StartCoroutine(SpawnProjectiles(projData, targetRot));
+            projectileData = projData;
+            targetRotation = targetRot;
+            shooterPosition = shooterPos;
+
+            StartCoroutine(SpawnProjectiles());
         }
     }
-    private IEnumerator SpawnProjectiles(ProjectileData projData, Quaternion targetRot)
+    private IEnumerator SpawnProjectiles()
     {
         isShooting = true;
-
-        projectileData = projData;
-        targetRotation = targetRot;
-        projectilePool.prefab = projData.projectilePrefab;
-        projectile = projData.projectile;
-        projectile.projectilePool = projectilePool;
 
         float startAngle, currentAngle, angleStep, endAngle;
         float timeBetweenProjectiles = 0f;
@@ -56,15 +49,14 @@ public class ProjectileSpawner : MonoBehaviour
             for (int j = 0; j < projectileData.projectilesPerBurst; j++)
             {
                 Vector2 pos = FindProjectileSpawnLoc(currentAngle);
-                bullet = projectilePool.GetObject();
+                bullet = ObjectPool.instance.GetObject(projectileData.projectilePrefab);
                 bullet.transform.position = pos;
-                //bullet.transform.rotation = targetRotation;
 
                 if (bullet.TryGetComponent(out Projectile proj))
                 {
                     proj.projectileSpeed = projectileData.projectileSpeed;
-                    proj.direction = bullet.transform.position - transform.position;
-                    StartCoroutine(proj.LaunchAndDisableAfterDelay(projectileData.projectileLifetime, targetRotation));
+                    proj.direction = bullet.transform.position - shooterPosition.position;
+                    proj.Launch(projectileData.projectileLifetime, targetRotation);
                 }
 
                 currentAngle += angleStep;
@@ -88,7 +80,7 @@ public class ProjectileSpawner : MonoBehaviour
 
     private void GetProjectileAngle(out float startAngle, out float currentAngle, out float angleStep, out float endAngle)
     {
-        float targetAngle = Mathf.Atan2(projectile.direction.y, projectile.direction.x) * Mathf.Rad2Deg;
+        float targetAngle = Mathf.Atan2(projectileData.projectile.direction.y, projectileData.projectile.direction.x) * Mathf.Rad2Deg;
         startAngle = targetAngle;
         endAngle = targetAngle;
         currentAngle = targetAngle;
@@ -105,8 +97,8 @@ public class ProjectileSpawner : MonoBehaviour
     }
     private Vector2 FindProjectileSpawnLoc(float currentAngle)
     {
-        float x = transform.position.x + startingDistance * Mathf.Cos(currentAngle * Mathf.Deg2Rad);
-        float y = transform.position.y + startingDistance * Mathf.Sin(currentAngle * Mathf.Deg2Rad);
+        float x = shooterPosition.position.x + startingDistance * Mathf.Cos(currentAngle * Mathf.Deg2Rad);
+        float y = shooterPosition.position.y + startingDistance * Mathf.Sin(currentAngle * Mathf.Deg2Rad);
 
         Vector2 pos = new Vector2(x, y);
 

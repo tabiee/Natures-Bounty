@@ -8,21 +8,34 @@ public class Projectile : MonoBehaviour
     //time it takes to disappear
     //effects on hit
 
-    //[HideInInspector] public int damageDealt;
+    public bool doCollisions = true;
+    public GameObject particles;
     [HideInInspector] public float projectileSpeed;
     [HideInInspector] public Vector3 direction;
-    [HideInInspector] public ObjectPool projectilePool;
     //[HideInInspector] public EffectOnHit effectOnHit;
     [SerializeField] private Rigidbody2D rb;
+    private Coroutine launchCoroutine;
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //apply damage and effects here
-        //if (!collision.gameObject.CompareTag("Projectile"))
-        //{
-        //    Debug.Log("boom collision!");
-        //    StopCoroutine("LaunchAndDisableAfterDelay");
-        //    ReturnToPool();
-        //}
+        if (doCollisions)
+        {
+            //apply damage and effects here
+            if (!collision.gameObject.CompareTag("Projectile"))
+            {
+                Debug.Log("boom collision!");
+
+                Instantiate(particles, transform.position, transform.rotation);
+                ReturnToPool();
+            }
+        }
+    }
+    public void Launch(float delay, Quaternion rotation)
+    {
+        if (launchCoroutine != null)
+        {
+            StopCoroutine(launchCoroutine);
+        }
+        launchCoroutine = StartCoroutine(LaunchAndDisableAfterDelay(delay, rotation));
     }
     public IEnumerator LaunchAndDisableAfterDelay(float delay, Quaternion rotation)
     {
@@ -41,9 +54,6 @@ public class Projectile : MonoBehaviour
     private void ReturnToPool()
     {
         gameObject.SetActive(false);
-        if (projectilePool != null)
-        {
-            projectilePool.ReturnObject(gameObject);
-        }
+        ObjectPool.instance.ReturnObject(gameObject);
     }
 }

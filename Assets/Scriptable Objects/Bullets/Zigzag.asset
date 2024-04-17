@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37d145545f1dbd341bbb2fd8bd1bc749, type: 3}
+  m_Name: Zigzag
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 2196239348347350715, guid: dda9d553a6e7f104ba5edda1d59df681, type: 3}
+  projectile: {fileID: 1474996939730525233, guid: dda9d553a6e7f104ba5edda1d59df681, type: 3}
+  rateOfFire: 1
+  projectilesPerBurst: 8
+  angleSpread: 60
+  burstCount: 5
+  timeBetweenBursts: 1
+  stagger: 1
+  oscillate: 1
+  projectileSpeed: 3
+  projectileLifetime: 8
+  projectileKnockback: 1
+  projectileShape: {x: 1, y: 1, z: 1}
+  damageDealt: 1
+  effectOnHit: {fileID: 0}
