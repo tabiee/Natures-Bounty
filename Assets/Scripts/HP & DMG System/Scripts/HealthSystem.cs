@@ -55,4 +55,16 @@ public class HealthSystem
             currentHealth = currentMaxHealth;
         }
     }
+
+    public bool IsDead()
+    {
+        if (currentHealth == 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

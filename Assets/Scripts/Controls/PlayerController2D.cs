@@ -41,5 +41,6 @@ public class PlayerController2D : MonoBehaviour
         smoothedMovementInput = Vector2.SmoothDamp(smoothedMovementInput, movementInput, ref movementInputSmoothVelocity, 0.1f);
 
         rb.velocity = smoothedMovementInput * movementSpeed;
+        rb.angularVelocity = 0;
     }
 }

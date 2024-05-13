@@ -42,7 +42,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Dodge",
+                    "name": "Dash",
                     "type": "PassThrough",
                     "id": "91e4aa3d-fb63-4dee-b4fd-2dd3832045f6",
                     "expectedControlType": "",
@@ -224,7 +224,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
-                    "action": "Dodge",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

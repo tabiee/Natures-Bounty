@@ -33,9 +33,18 @@ public class PlayerHealth : MonoBehaviour
     public void DamagePlayer(int amount)
     {
         playerHealth.ModifyHealth(-amount);
+        if (playerHealth.IsDead())
+        {
+            PlayerDied();
+        }
     }
     public void HealPlayer(int amount)
     {
         playerHealth.ModifyHealth(amount);
+    }
+
+    void PlayerDied()
+    {
+        Debug.Log("u are DED. knot big soup rice,,");
     }
 }

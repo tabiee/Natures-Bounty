@@ -10,13 +10,15 @@ public class ProjectileSpawner : MonoBehaviour
     private Transform shooterPosition;
     [SerializeField] private float startingDistance = 0.1f;
     private bool isShooting;
-    public void StartShooting(ProjectileData projData, Quaternion targetRot, Transform shooterPos)
+    private bool isShooterPlayer;
+    public void StartShooting(ProjectileData projData, Quaternion targetRot, Transform shooterPos, bool isShooterPlayer)
     {
         if (!isShooting)
         {
             projectileData = projData;
             targetRotation = targetRot;
             shooterPosition = shooterPos;
+            this.isShooterPlayer = isShooterPlayer;
 
             StartCoroutine(SpawnProjectiles());
         }
@@ -56,7 +58,7 @@ public class ProjectileSpawner : MonoBehaviour
                 {
                     proj.projectileSpeed = projectileData.projectileSpeed;
                     proj.direction = bullet.transform.position - shooterPosition.position;
-                    proj.Launch(projectileData.projectileLifetime, targetRotation, projectileData);
+                    proj.Launch(projectileData.projectileLifetime, targetRotation, isShooterPlayer, projectileData);
                 }
 
                 currentAngle += angleStep;

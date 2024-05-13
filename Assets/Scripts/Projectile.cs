@@ -16,33 +16,44 @@ public class Projectile : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     private Coroutine launchCoroutine;
     private ProjectileData projectileData;
+    private bool isShotByPlayer = true;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (doCollisions)
         {
-            //apply damage and effects here
-            if (!collision.gameObject.CompareTag("Projectile"))
+            if (!isShotByPlayer)
             {
-                Debug.Log("boom collision!");
+                if (collision.gameObject.CompareTag("Player"))
+                {
+                    PlayerHealth.instance.DamagePlayer(projectileData.damageDealt);
 
-                Instantiate(particles, transform.position, transform.rotation);
-                ReturnToPool();
+                    Instantiate(particles, transform.position, transform.rotation);
+                    ReturnToPool();
+                }
             }
-
-            if (collision.gameObject.CompareTag("Player"))
+            else
             {
-                //deal dmg
-                PlayerHealth.instance.DamagePlayer(projectileData.damageDealt);
+                if (collision.gameObject.CompareTag("Enemy"))
+                {
+                    UnitHealth enemyHP = collision.gameObject.GetComponent<UnitHealth>();
+                    enemyHP.DamageEnemy(projectileData.damageDealt);
+                    Instantiate(particles, transform.position, transform.rotation);
+                    ReturnToPool();
+                }
             }
         }
     }
-    public void Launch(float lifetime, Quaternion targetRotation, ProjectileData projData)
+    public void Launch(float lifetime, Quaternion targetRotation, bool isPlayerBullet, ProjectileData projData)
     {
         if (launchCoroutine != null)
         {
             StopCoroutine(launchCoroutine);
         }
+
+        SetLayer(isPlayerBullet);
+
         projectileData = projData;
+        isShotByPlayer = isPlayerBullet;
         launchCoroutine = StartCoroutine(LaunchAndDisableAfterDelay(lifetime, targetRotation));
     }
     public IEnumerator LaunchAndDisableAfterDelay(float lifetime, Quaternion targetRotation)
@@ -58,7 +69,21 @@ public class Projectile : MonoBehaviour
 
         ReturnToPool();
     }
+    void SetLayer(bool isPlayerBullet)
+    {
+        int newLayerIndex;
 
+        if (isPlayerBullet)
+        {
+            newLayerIndex = LayerMask.NameToLayer("PlayerProjectile");
+            gameObject.layer = newLayerIndex;
+        }
+        else
+        {
+            newLayerIndex = LayerMask.NameToLayer("EnemyProjectile");
+            gameObject.layer = newLayerIndex;
+        }
+    }
     private void ReturnToPool()
     {
         gameObject.SetActive(false);

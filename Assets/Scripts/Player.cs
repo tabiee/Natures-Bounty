@@ -9,12 +9,12 @@ public class Player : MonoBehaviour
     public static Player instance;
     [SerializeField] private ProjectileData projectileData;
     [SerializeField] private ProjectileSpawner projectileSpawner;
-    [SerializeField] private DodgeRoll dodgeRoll;
+    [SerializeField] private Dash dash;
     [SerializeField] private Transform shooterPosition;
 
     private ActionWheel _actionWheel;
     private bool isShootHeld;
-    private bool isDodgeHeld;
+    private bool isDashHeld;
     private void Awake()
     {
         if (instance != null)
@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         Shoot();
-        Dodge();
+        Dash();
     }
     void OnShoot(InputValue inputValue)
     {
@@ -42,24 +42,24 @@ public class Player : MonoBehaviour
     {
         if (isShootHeld)
         {
-            IAction shootAction = new ShootAction(projectileData, transform.rotation, shooterPosition, projectileSpawner);
+            IAction shootAction = new ShootAction(projectileData, transform.rotation, shooterPosition, true, projectileSpawner);
             _actionWheel = new ActionWheel(shootAction);
             _actionWheel.UseAction();
             //Debug.Log("Pew!");
         }
     }
-    void OnDodge(InputValue inputValue)
+    void OnDash(InputValue inputValue)
     {
-        isDodgeHeld = inputValue.isPressed;
+        isDashHeld = inputValue.isPressed;
     }
-    void Dodge()
+    void Dash()
     {
-        if (isDodgeHeld)
+        if (isDashHeld)
         {
-            IAction action = new DodgeAction(dodgeRoll);
+            IAction action = new DashAction(dash);
             _actionWheel = new ActionWheel(action);
             _actionWheel.UseAction();
-            //Debug.Log("Dodge!");
+            //Debug.Log("Dashed!");
         }
     }
 }

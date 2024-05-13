@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //concrete command
-public class DodgeAction : IAction
+public class DashAction : IAction
 {
-    private DodgeRoll _dodgeRoll;
+    private Dash _dash;
 
-    public DodgeAction(DodgeRoll dodgeRoll)
+    public DashAction(Dash dash)
     {
-        _dodgeRoll = dodgeRoll;
+        _dash = dash;
     }
     public void Execute()
     {
-        _dodgeRoll.Dodge();
+        _dash.UseDash();
         //Debug.Log("dodged! totally! trust me bro!");
     }
 }
