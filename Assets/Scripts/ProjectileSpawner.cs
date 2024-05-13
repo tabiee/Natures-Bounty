@@ -56,7 +56,7 @@ public class ProjectileSpawner : MonoBehaviour
                 {
                     proj.projectileSpeed = projectileData.projectileSpeed;
                     proj.direction = bullet.transform.position - shooterPosition.position;
-                    proj.Launch(projectileData.projectileLifetime, targetRotation);
+                    proj.Launch(projectileData.projectileLifetime, targetRotation, projectileData);
                 }
 
                 currentAngle += angleStep;
