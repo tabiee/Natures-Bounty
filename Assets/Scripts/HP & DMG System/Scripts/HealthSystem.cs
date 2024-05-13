@@ -43,16 +43,19 @@ public class HealthSystem
         currentMaxHealth = maxHealth;
     }
 
-    public void ModifyHealth(int amount)
+    public void ModifyHealth(int amount, bool canBeDamaged)
     {
-        currentHealth += amount;
-        if (currentHealth < 0)
+        if (canBeDamaged)
         {
-            currentHealth = 0;
-        }
-        else if (currentHealth > currentMaxHealth)
-        {
-            currentHealth = currentMaxHealth;
+            currentHealth += amount;
+            if (currentHealth < 0)
+            {
+                currentHealth = 0;
+            }
+            else if (currentHealth > currentMaxHealth)
+            {
+                currentHealth = currentMaxHealth;
+            }
         }
     }
 

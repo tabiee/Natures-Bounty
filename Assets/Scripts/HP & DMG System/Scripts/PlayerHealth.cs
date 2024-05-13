@@ -10,6 +10,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private int maxPlayerHealth;
     public Image healthBar;
     public HealthSystem playerHealth;
+    public bool canBeDamaged = true;
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -32,7 +33,7 @@ public class PlayerHealth : MonoBehaviour
     }
     public void DamagePlayer(int amount)
     {
-        playerHealth.ModifyHealth(-amount);
+        playerHealth.ModifyHealth(-amount, canBeDamaged);
         if (playerHealth.IsDead())
         {
             PlayerDied();
@@ -40,7 +41,7 @@ public class PlayerHealth : MonoBehaviour
     }
     public void HealPlayer(int amount)
     {
-        playerHealth.ModifyHealth(amount);
+        playerHealth.ModifyHealth(amount, canBeDamaged);
     }
 
     void PlayerDied()

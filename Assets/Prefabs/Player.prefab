@@ -239,7 +239,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07f2693600d1bdd478ce0f2b6eeb7936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingDistance: 0.1
 --- !u!114 &1348447251187960322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,6 +269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxPlayerHealth: 4
   healthBar: {fileID: 1445972457547423900}
+  canBeDamaged: 1
 --- !u!58 &1945262924676311720
 CircleCollider2D:
   m_ObjectHideFlags: 0
