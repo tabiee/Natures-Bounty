@@ -23,9 +23,19 @@ public class UnitHealth : MonoBehaviour
     public void DamageEnemy(int amount)
     {
         unitHealth.ModifyHealth(-amount);
+        if (unitHealth.IsDead())
+        {
+            UnitKilled();
+        }
     }
     public void HealEnemy(int amount)
     {
         unitHealth.ModifyHealth(amount);
+    }
+    void UnitKilled()
+    {
+        Destroy(this.gameObject);
+        //can be changed to use objectpool later when the generators are made.
+        //np it easy
     }
 }

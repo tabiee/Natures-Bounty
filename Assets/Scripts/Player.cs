@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
     {
         if (isShootHeld)
         {
-            IAction shootAction = new ShootAction(projectileData, transform.rotation, shooterPosition, projectileSpawner);
+            IAction shootAction = new ShootAction(projectileData, transform.rotation, shooterPosition, true, projectileSpawner);
             _actionWheel = new ActionWheel(shootAction);
             _actionWheel.UseAction();
             //Debug.Log("Pew!");

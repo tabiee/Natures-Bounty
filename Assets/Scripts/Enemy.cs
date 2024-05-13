@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
     }
     void Shoot(Quaternion targetRotation)
     {
-        IAction shootAction = new ShootAction(projectileData, targetRotation, shooterPosition, projectileSpawner);
+        IAction shootAction = new ShootAction(projectileData, targetRotation, shooterPosition, false, projectileSpawner);
         _actionWheel = new ActionWheel(shootAction);
         _actionWheel.UseAction();
         //Debug.Log("Pew!");
