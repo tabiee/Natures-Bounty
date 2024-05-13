@@ -8,6 +8,7 @@ public class UnitHealth : MonoBehaviour
     [SerializeField] private int maxUnitHealth;
     [SerializeField] private Image healthBar;
     public HealthSystem unitHealth;
+    public bool canBeDamaged = true;
     private void Awake()
     {
         unitHealth = new HealthSystem(maxUnitHealth, maxUnitHealth);
@@ -22,7 +23,7 @@ public class UnitHealth : MonoBehaviour
     }
     public void DamageEnemy(int amount)
     {
-        unitHealth.ModifyHealth(-amount);
+        unitHealth.ModifyHealth(-amount, canBeDamaged);
         if (unitHealth.IsDead())
         {
             UnitKilled();
@@ -30,7 +31,7 @@ public class UnitHealth : MonoBehaviour
     }
     public void HealEnemy(int amount)
     {
-        unitHealth.ModifyHealth(amount);
+        unitHealth.ModifyHealth(amount, canBeDamaged);
     }
     void UnitKilled()
     {

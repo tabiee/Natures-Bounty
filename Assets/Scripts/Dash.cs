@@ -30,6 +30,7 @@ public class Dash : MonoBehaviour
     void StartDashing()
     {
         isDashing = true;
+        PlayerHealth.instance.canBeDamaged = false;
         dashParticle.SetActive(true);
 
         StartCoroutine(DashTimer());
@@ -39,6 +40,7 @@ public class Dash : MonoBehaviour
     {
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
+        PlayerHealth.instance.canBeDamaged = true;
         dashParticle.SetActive(false);
     }
 
