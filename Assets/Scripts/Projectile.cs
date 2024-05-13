@@ -11,7 +11,7 @@ public class Projectile : MonoBehaviour
     public bool doCollisions = true;
     public GameObject particles;
     [HideInInspector] public float projectileSpeed;
-    [HideInInspector] public Vector3 direction;
+    /*[HideInInspector] */public Vector3 direction;
     //[HideInInspector] public EffectOnHit effectOnHit;
     [SerializeField] private Rigidbody2D rb;
     private Coroutine launchCoroutine;

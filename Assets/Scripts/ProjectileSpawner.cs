@@ -8,7 +8,7 @@ public class ProjectileSpawner : MonoBehaviour
     private ProjectileData projectileData;
     private Quaternion targetRotation;
     private Transform shooterPosition;
-    private float startingDistance = 0.1f;
+    [SerializeField] private float startingDistance = 0.1f;
     private bool isShooting;
     public void StartShooting(ProjectileData projData, Quaternion targetRot, Transform shooterPos)
     {

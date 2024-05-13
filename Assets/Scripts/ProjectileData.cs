@@ -21,7 +21,7 @@ public class ProjectileData : ScriptableObject
     public int projectilesPerBurst = 1;
 
     [Tooltip("How big the cone of projectile spread is.")]
-    [Range(0, 359)] public float angleSpread;
+    [Range(0, 360)] public float angleSpread;
 
     //===========================
 
