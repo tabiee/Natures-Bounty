@@ -21,6 +21,12 @@ public class Projectile : MonoBehaviour
     {
         if (doCollisions)
         {
+            if (collision.gameObject.CompareTag("Environment"))
+            {
+                Instantiate(particles, transform.position, transform.rotation);
+                ReturnToPool();
+            }
+
             if (!isShotByPlayer)
             {
                 if (collision.gameObject.CompareTag("Player"))

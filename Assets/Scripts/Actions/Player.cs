@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     public static Player instance;
-    [SerializeField] private ProjectileData projectileData;
+    public ProjectileData projectileData;
     [SerializeField] private ProjectileSpawner projectileSpawner;
     [SerializeField] private Dash dash;
     [SerializeField] private Transform shooterPosition;
