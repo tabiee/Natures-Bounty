@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class Pickup : ScriptableObject
 {
-    public abstract void CollectPickup();
+    public abstract void PickupUsed();
 }
