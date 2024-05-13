@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EffectLifetime : MonoBehaviour
+public class ParticleLifetime : MonoBehaviour
 {
     [SerializeField] private float lifetime = 0.25f;
     void OnEnable()

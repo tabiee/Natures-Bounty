@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1800530236062943143}
   - component: {fileID: 5857106414415086948}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 1474996939730525233}
   - component: {fileID: 3774244434484020313}
   - component: {fileID: 2523190985556521513}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Player Bullet
   m_TagString: Projectile
   m_Icon: {fileID: 0}
@@ -135,7 +135,6 @@ MonoBehaviour:
   particles: {fileID: 5084295729553637305, guid: 6135172e06840fe4382870d9d60c46cc, type: 3}
   projectileSpeed: 0
   direction: {x: 0, y: 0, z: 0}
-  projectilePool: {fileID: 0}
   rb: {fileID: 3774244434484020313}
 --- !u!50 &3774244434484020313
 Rigidbody2D:
