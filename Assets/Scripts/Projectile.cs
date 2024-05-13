@@ -15,6 +15,7 @@ public class Projectile : MonoBehaviour
     //[HideInInspector] public EffectOnHit effectOnHit;
     [SerializeField] private Rigidbody2D rb;
     private Coroutine launchCoroutine;
+    private ProjectileData projectileData;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (doCollisions)
@@ -27,26 +28,33 @@ public class Projectile : MonoBehaviour
                 Instantiate(particles, transform.position, transform.rotation);
                 ReturnToPool();
             }
+
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                //deal dmg
+                PlayerHealth.instance.DamagePlayer(projectileData.damageDealt);
+            }
         }
     }
-    public void Launch(float delay, Quaternion rotation)
+    public void Launch(float lifetime, Quaternion targetRotation, ProjectileData projData)
     {
         if (launchCoroutine != null)
         {
             StopCoroutine(launchCoroutine);
         }
-        launchCoroutine = StartCoroutine(LaunchAndDisableAfterDelay(delay, rotation));
+        projectileData = projData;
+        launchCoroutine = StartCoroutine(LaunchAndDisableAfterDelay(lifetime, targetRotation));
     }
-    public IEnumerator LaunchAndDisableAfterDelay(float delay, Quaternion rotation)
+    public IEnumerator LaunchAndDisableAfterDelay(float lifetime, Quaternion targetRotation)
     {
         rb.velocity = Vector2.zero;
-        transform.rotation = rotation;
+        transform.rotation = targetRotation;
 
         yield return null;
 
         rb.AddRelativeForce(direction.normalized * projectileSpeed, ForceMode2D.Impulse);
 
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(lifetime);
 
         ReturnToPool();
     }
