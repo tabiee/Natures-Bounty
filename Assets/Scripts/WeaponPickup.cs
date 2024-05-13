@@ -5,8 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Weapon Pickup", menuName = "Pickups/Create Weapon Pickup")]
 public class WeaponPickup : Pickup
 {
-    ProjectileData weapon;
-    public override void CollectPickup()
+    [SerializeField] private ProjectileData weapon;
+    public override void PickupUsed()
     {
         Player.instance.projectileData = weapon;
     }
