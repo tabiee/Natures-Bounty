@@ -10,10 +10,11 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float lookRadius = 10f;  // Detection range
     [SerializeField] private float attackRadius = 5f; // Attack range
     [SerializeField] private float speed = 2f;        // Enemy speed
+    [SerializeField] private float dodgeCooldown = 2f;
+    [SerializeField] private float maxDodgeDistance = 10f;
 
 
     private Rigidbody2D rb;
-    private NavMeshAgent agent;
     private Enemy enemyScript;
     public bool isAttacking = false;
     public bool isChasing = false;
@@ -26,7 +27,6 @@ public class EnemyAI : MonoBehaviour
 
     private void Awake()
     {
-        agent = GetComponent<NavMeshAgent>();
         enemyScript = GetComponent<Enemy>();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -51,7 +51,6 @@ public class EnemyAI : MonoBehaviour
 
             if (distance <= attackRadius)
             {
-                Debug.Log("attackradius");
                 AttackPlayer();
         
             }
@@ -62,7 +61,6 @@ public class EnemyAI : MonoBehaviour
 
         if (distance > lookRadius && isChasing)
         {
-            Debug.Log("Stop chasing");
             isChasing = false;
             isAttacking = false;
             enemyScript.canAttack = false;
@@ -75,7 +73,6 @@ public class EnemyAI : MonoBehaviour
 
     private void AttackPlayer()
     {
-        Debug.Log("Attack");
         isChasing = false;
         isAttacking = true;
         if (isRanged)
@@ -107,17 +104,15 @@ public class EnemyAI : MonoBehaviour
 
     void MoveObject()
     {
-        Debug.Log("MovedEnemy");
         float step = 5 * Time.deltaTime; // Calculate distance to move
         transform.position = Vector2.MoveTowards(transform.position, randomMovetargetPosition, step);
     }
 
     IEnumerator WaitAndMove()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(dodgeCooldown);
        
-       Vector2 targetPosition = new Vector2(Random.Range(0, 5), Random.Range(0, 5));
-        Debug.Log("new pos = " + targetPosition);
+       Vector2 targetPosition = new Vector2(Random.Range(-maxDodgeDistance, maxDodgeDistance), Random.Range(-maxDodgeDistance, maxDodgeDistance));
     }
 
     private void ChasePlayer()
