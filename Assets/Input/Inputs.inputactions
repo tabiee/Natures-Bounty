@@ -49,42 +49,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "ControllerLook",
-                    "type": "Value",
-                    "id": "f593e313-eb57-476c-baed-eee32a187f61",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "ControllerMove",
-                    "type": "Value",
-                    "id": "3cace242-d975-4d77-a804-8a3a0faf5aea",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "ControllerDash",
-                    "type": "Button",
-                    "id": "6362b0fe-53d9-483a-8c87-eb80e5d629f0",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ControllerShoot",
-                    "type": "Button",
-                    "id": "cc2f0ac6-fa72-4b05-b29e-48c7947eff4d",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -255,6 +219,17 @@
                 },
                 {
                     "name": "",
+                    "id": "ad30093d-fd0c-403e-9b93-125cfa14a39c",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "250167d2-a8e2-47b2-96ef-c563e6a7fbee",
                     "path": "<Keyboard>/space",
                     "interactions": "",
@@ -266,45 +241,12 @@
                 },
                 {
                     "name": "",
-                    "id": "2ad612e3-b731-4d0a-8dea-a7b137e90a0d",
-                    "path": "<Gamepad>/rightStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Xbox Controller",
-                    "action": "ControllerLook",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "71ecb447-bd1a-46cc-826d-a5fd4eb7b073",
-                    "path": "<Gamepad>/leftStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Xbox Controller",
-                    "action": "ControllerMove",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d917245d-876f-4266-ad9d-25cf952bbc2e",
-                    "path": "<Gamepad>/buttonSouth",
+                    "id": "ac8075c1-d95d-4f24-b8e1-f6276aed469b",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ControllerDash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f75c88e2-8028-4166-b10f-ab07a61c4392",
-                    "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ControllerShoot",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
