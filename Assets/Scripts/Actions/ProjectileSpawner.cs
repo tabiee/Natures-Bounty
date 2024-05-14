@@ -13,7 +13,8 @@ public class ProjectileSpawner : MonoBehaviour
     private bool isShooting;
     private bool isShooterPlayer;
     private int currentIndex = -1;
-    public void StartShooting(ProjectileData[] projData, Quaternion targetRot, Transform shooterPos, bool isPlayer, bool isAlternating)
+
+    public void StartShooting(ProjectileData[] projData, Quaternion targetRot, Transform shooterPos, bool isPlayer, bool isCycling)
     {
         if (!isShooting)
         {
@@ -23,21 +24,21 @@ public class ProjectileSpawner : MonoBehaviour
             shooterPosition = shooterPos;
             isShooterPlayer = isPlayer;
 
-            if (isAlternating)
+            if (isCycling)
             {
-                AlternateProjectile();
+                CycleProjectile();
             }
 
             StartCoroutine(SpawnProjectiles());
         }
     }
 
-    private void AlternateProjectile()
+    private void CycleProjectile()
     {
         currentIndex = (currentIndex + 1) % projectileDataPack.Length;
         projectileData = projectileDataPack[currentIndex];
 
-        Debug.Log("Projectile changed! index: " + currentIndex);
+        //Debug.Log("Projectile changed! index: " + currentIndex);
     }
     private IEnumerator SpawnProjectiles()
     {
