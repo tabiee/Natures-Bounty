@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6714851334825140b5f2d8a3595a401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  knockbackForce: 5000
   doCollisions: 1
   particles: {fileID: 5084295729553637305, guid: 6135172e06840fe4382870d9d60c46cc, type: 3}
   projectileSpeed: 0

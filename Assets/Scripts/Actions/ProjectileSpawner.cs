@@ -12,18 +12,19 @@ public class ProjectileSpawner : MonoBehaviour
     private float startingDistance = 0.1f;
     private bool isShooting;
     private bool isShooterPlayer;
+    private int currentIndex = -1;
     public void StartShooting(ProjectileData[] projData, Quaternion targetRot, Transform shooterPos, bool isPlayer, bool isAlternating)
     {
         if (!isShooting)
         {
             projectileData = projData[0];
+            projectileDataPack = projData;
             targetRotation = targetRot;
             shooterPosition = shooterPos;
             isShooterPlayer = isPlayer;
 
             if (isAlternating)
             {
-                projectileDataPack = projData;
                 AlternateProjectile();
             }
 
@@ -33,9 +34,10 @@ public class ProjectileSpawner : MonoBehaviour
 
     private void AlternateProjectile()
     {
-        int randomIndex = Random.Range(0, projectileDataPack.Length);
+        currentIndex = (currentIndex + 1) % projectileDataPack.Length;
+        projectileData = projectileDataPack[currentIndex];
 
-        projectileData = projectileDataPack[randomIndex];
+        Debug.Log("Projectile changed! index: " + currentIndex);
     }
     private IEnumerator SpawnProjectiles()
     {

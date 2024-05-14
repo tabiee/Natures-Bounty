@@ -46,6 +46,6 @@ public class PlayerHealth : MonoBehaviour
 
     void PlayerDied()
     {
-        Debug.Log("u are DED. knot big soup rice,,");
+        //Debug.Log("u are DED. knot big soup rice,,");
     }
 }

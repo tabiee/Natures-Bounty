@@ -224,7 +224,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4770a5c4cfaf51940a03dc06fe4cf578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileData: {fileID: 11400000, guid: 230ca37117f91794eafa74dd32b8380c, type: 2}
+  projectileData:
+  - {fileID: 11400000, guid: 230ca37117f91794eafa74dd32b8380c, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
   projectileSpawner: {fileID: 1377324654850338554}
   dash: {fileID: 1348447251187960322}
   shooterPosition: {fileID: 0}
@@ -464,7 +467,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.7
+  m_Radius: 0.5
 --- !u!114 &8719774737897558663
 MonoBehaviour:
   m_ObjectHideFlags: 0

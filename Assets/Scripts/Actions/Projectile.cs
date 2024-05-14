@@ -8,6 +8,7 @@ public class Projectile : MonoBehaviour
     //time it takes to disappear
     //effects on hit
 
+    public float knockbackForce;
     public bool doCollisions = true;
     public GameObject particles;
     [HideInInspector] public float projectileSpeed;
@@ -23,7 +24,6 @@ public class Projectile : MonoBehaviour
         {
             if (collision.gameObject.CompareTag("Environment"))
             {
-                Instantiate(particles, transform.position, transform.rotation);
                 ReturnToPool();
             }
 
@@ -33,7 +33,6 @@ public class Projectile : MonoBehaviour
                 {
                     PlayerHealth.instance.DamagePlayer(projectileData.damageDealt);
 
-                    Instantiate(particles, transform.position, transform.rotation);
                     ReturnToPool();
                 }
             }
@@ -43,7 +42,7 @@ public class Projectile : MonoBehaviour
                 {
                     UnitHealth enemyHP = collision.gameObject.GetComponent<UnitHealth>();
                     enemyHP.DamageEnemy(projectileData.damageDealt);
-                    Instantiate(particles, transform.position, transform.rotation);
+
                     ReturnToPool();
                 }
             }
@@ -92,6 +91,8 @@ public class Projectile : MonoBehaviour
     }
     private void ReturnToPool()
     {
+        Instantiate(particles, transform.position, transform.rotation);
+
         gameObject.SetActive(false);
         ObjectPool.instance.ReturnObject(gameObject);
     }

@@ -7,7 +7,7 @@ public class TriggerInteraction2D : MonoBehaviour
     [SerializeField] private LayerMask interactionLayer;
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("trigger entered");
+        //Debug.Log("trigger entered");
 
         if (IsInteractable(other.gameObject.layer))
         {
