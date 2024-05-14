@@ -32,7 +32,6 @@ public class Enemy : MonoBehaviour
             _actionWheel.UseAction();
             //Debug.Log("Pew!");
         }
-
     }
     private Quaternion GetTargetPosition()
     {

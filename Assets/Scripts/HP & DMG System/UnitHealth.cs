@@ -23,7 +23,7 @@ public class UnitHealth : MonoBehaviour
     }
     public void DamageEnemy(int amount)
     {
-        unitHealth.ModifyHealth(-amount, canBeDamaged);
+        unitHealth.DealDamage(amount, canBeDamaged);
         if (unitHealth.IsDead())
         {
             UnitKilled();
@@ -31,7 +31,7 @@ public class UnitHealth : MonoBehaviour
     }
     public void HealEnemy(int amount)
     {
-        unitHealth.ModifyHealth(amount, canBeDamaged);
+        unitHealth.HealDamage(amount);
     }
     void UnitKilled()
     {

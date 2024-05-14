@@ -8,6 +8,8 @@ public class PlayerHealth : MonoBehaviour
     public static PlayerHealth instance;
 
     [SerializeField] private int maxPlayerHealth;
+    [SerializeField] private float invincibilityFrames = 0.5f;
+
     public Image healthBar;
     public HealthSystem playerHealth;
     public bool canBeDamaged = true;
@@ -33,7 +35,8 @@ public class PlayerHealth : MonoBehaviour
     }
     public void DamagePlayer(int amount)
     {
-        playerHealth.ModifyHealth(-amount, canBeDamaged);
+        playerHealth.DealDamage(amount, canBeDamaged);
+        StartCoroutine(DamagedInvincibility());
         if (playerHealth.IsDead())
         {
             PlayerDied();
@@ -41,11 +44,17 @@ public class PlayerHealth : MonoBehaviour
     }
     public void HealPlayer(int amount)
     {
-        playerHealth.ModifyHealth(amount, canBeDamaged);
+        playerHealth.HealDamage(amount);
     }
 
     void PlayerDied()
     {
         //Debug.Log("u are DED. knot big soup rice,,");
+    }
+    IEnumerator DamagedInvincibility()
+    {
+        canBeDamaged = false;
+        yield return new WaitForSeconds(invincibilityFrames);
+        canBeDamaged = true;
     }
 }
