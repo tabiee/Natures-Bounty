@@ -1,49 +1,72 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
 
-    private Enemy enemyScript;
-    public float lookRadius = 10f;  // Detection range
-    public float attackRadius = 5f; // Attack range
-    public float patrolTime = 5f;   // Time between patrols
-    public float speed = 2f;        // Enemy speed
-    private Rigidbody2D rb;
+    [Header("EnemyInfo")]
+    [SerializeField] private float lookRadius = 10f;  // Detection range
+    [SerializeField] private float attackRadius = 5f; // Attack range
+    [SerializeField] private float speed = 2f;        // Enemy speed
 
-    bool isAttacking = false;
+
+    private Rigidbody2D rb;
+    private NavMeshAgent agent;
+    private Enemy enemyScript;
+    public bool isAttacking = false;
+    public bool isChasing = false;
+    private Vector2 randomMovetargetPosition;
+
+
+    [Header("EnemyType")]
     [SerializeField] private bool canMoveWhenShoot;
     [SerializeField] private bool isRanged;
+
     private void Awake()
     {
+        agent = GetComponent<NavMeshAgent>();
         enemyScript = GetComponent<Enemy>();
         rb = GetComponent<Rigidbody2D>();
     }
     void Start()
     {
+        if (!isRanged)
+        {
+            attackRadius = 0;
+        }
         enemyScript.canAttack = false;
+
     }
 
     void Update()
     {
         float distance = Vector2.Distance(enemyScript.targetPosition.position, transform.position);
-        
-        if (distance <= lookRadius && isAttacking == false)
+
+        if (distance <= lookRadius)
         {
+
             ChasePlayer();
-            
+
             if (distance <= attackRadius)
             {
+                Debug.Log("attackradius");
                 AttackPlayer();
-
+        
             }
-        }
 
-        else
+           
+        }
+        
+
+        if (distance > lookRadius && isChasing)
         {
+            Debug.Log("Stop chasing");
+            isChasing = false;
             isAttacking = false;
             enemyScript.canAttack = false;
+            rb.velocity = Vector2.zero;
         }
 
     }
@@ -52,6 +75,8 @@ public class EnemyAI : MonoBehaviour
 
     private void AttackPlayer()
     {
+        Debug.Log("Attack");
+        isChasing = false;
         isAttacking = true;
         if (isRanged)
         {
@@ -60,36 +85,52 @@ public class EnemyAI : MonoBehaviour
 
             if (canMoveWhenShoot)
             {
-
+                if ((Vector2)transform.position != randomMovetargetPosition)
+                {
+                    MoveObject();
+                }
+                else
+                {
+                    StartCoroutine(WaitAndMove());
+                }
             }
 
-            else
+            if (!canMoveWhenShoot)
+            {
                 rb.velocity = Vector2.zero;
+
+
+            }
         }
 
     }
 
-    
+    void MoveObject()
+    {
+        Debug.Log("MovedEnemy");
+        float step = 5 * Time.deltaTime; // Calculate distance to move
+        transform.position = Vector2.MoveTowards(transform.position, randomMovetargetPosition, step);
+    }
+
+    IEnumerator WaitAndMove()
+    {
+        yield return new WaitForSeconds(2);
+       
+       Vector2 targetPosition = new Vector2(Random.Range(0, 5), Random.Range(0, 5));
+        Debug.Log("new pos = " + targetPosition);
+    }
 
     private void ChasePlayer()
     {
-
+        Debug.Log("Chase");
+        isChasing = true;
         isAttacking = false;
         enemyScript.canAttack = false;
         Vector2 direction = (enemyScript.targetPosition.position - transform.position).normalized;
         rb.velocity = direction * speed;
     }
 
-    public static Vector3 RandomNavSphere(Vector2 origin, float dist, int layermask)
-    {
-        Vector2 randDirection = Random.insideUnitSphere * dist;
-        randDirection += origin;
-
-        NavMeshHit navHit;
-        NavMesh.SamplePosition(randDirection, out navHit, dist, layermask);
-
-        return navHit.position;
-    }
+    
 
     void OnDrawGizmosSelected()
     {
