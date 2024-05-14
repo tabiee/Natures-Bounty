@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine;
 
-public class RayInteraction : MonoBehaviour
+public class RayInteraction2D : MonoBehaviour
 {
     [SerializeField] private LayerMask interactionLayer;
     [SerializeField] private float interactionRange = 12f;
@@ -17,8 +17,9 @@ public class RayInteraction : MonoBehaviour
             LoadInteractionOption();
         }
     }
-
-    private System.Func<Ray> rayProvider;
+    Vector2 mousePos;
+    //private System.Func<Ray2D> rayProvider;
+    private System.Func<Vector2> rayProvider;
     private PlayerInput input;
     private InputAction interactInput;
     void Start()
@@ -47,25 +48,32 @@ public class RayInteraction : MonoBehaviour
 
         if (_isFromMouse)
         {
-            rayProvider = () => Camera.main.ScreenPointToRay(Input.mousePosition);
+            //mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            //rayProvider = () => mousePos - (Vector2)transform.position;
+
         }
         else
         {
-            rayProvider = () =>
-            {
-                Vector3 pos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
-                return new Ray(pos, transform.forward);
-            };
+            rayProvider = () => transform.position - transform.right;
         }
     }
     void RaycastForObject()
     {
         //shoot a ray from either mouse position or object center (+1 above it) in the direction infront of it based on distance float, ignore specified layers
-        Ray ray = rayProvider.Invoke();
-        RaycastHit hitData;
-        Debug.DrawRay(ray.origin, ray.direction * interactionRange, _isFromMouse ? Color.green : Color.red, 0.1f, false);
+        //Ray2D ray = rayProvider.Invoke();
+        Vector2 dir;
+        //Vector2 dir = rayProvider.Invoke();
+        RaycastHit2D hitData;
 
-        if (Physics.Raycast(ray, out hitData, interactionRange, interactionLayer))
+
+        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        dir = mousePos - (Vector2)transform.position;
+        Debug.DrawRay(transform.position, dir.normalized * interactionRange, _isFromMouse ? Color.green : Color.red, 0.1f, false);
+
+        // hitData = Physics2D.Raycast(transform.position, ray.direction, interactionRange, interactionLayer);
+        hitData = Physics2D.Raycast(transform.position, dir.normalized, interactionRange, interactionLayer);
+
+        if (hitData.collider != null)
             {
             Debug.Log(hitData.collider.gameObject.name);
 

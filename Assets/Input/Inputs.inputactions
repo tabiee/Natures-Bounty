@@ -51,6 +51,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "cf10d87f-84d3-478d-bca5-2ec5949edc5d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "ControllerLook",
                     "type": "Value",
                     "id": "f593e313-eb57-476c-baed-eee32a187f61",
@@ -305,6 +314,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ControllerShoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "39ce1ab5-7849-422a-8d4d-376aebfd1702",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

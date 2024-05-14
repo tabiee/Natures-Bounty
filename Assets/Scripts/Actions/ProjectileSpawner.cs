@@ -6,22 +6,36 @@ using UnityEngine;
 public class ProjectileSpawner : MonoBehaviour
 {
     private ProjectileData projectileData;
+    private ProjectileData[] projectileDataPack;
     private Quaternion targetRotation;
     private Transform shooterPosition;
     private float startingDistance = 0.1f;
     private bool isShooting;
     private bool isShooterPlayer;
-    public void StartShooting(ProjectileData projData, Quaternion targetRot, Transform shooterPos, bool isShooterPlayer)
+    public void StartShooting(ProjectileData[] projData, Quaternion targetRot, Transform shooterPos, bool isPlayer, bool isAlternating)
     {
         if (!isShooting)
         {
-            projectileData = projData;
+            projectileData = projData[0];
             targetRotation = targetRot;
             shooterPosition = shooterPos;
-            this.isShooterPlayer = isShooterPlayer;
+            isShooterPlayer = isPlayer;
+
+            if (isAlternating)
+            {
+                projectileDataPack = projData;
+                AlternateProjectile();
+            }
 
             StartCoroutine(SpawnProjectiles());
         }
+    }
+
+    private void AlternateProjectile()
+    {
+        int randomIndex = Random.Range(0, projectileDataPack.Length);
+
+        projectileData = projectileDataPack[randomIndex];
     }
     private IEnumerator SpawnProjectiles()
     {

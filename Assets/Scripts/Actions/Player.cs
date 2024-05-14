@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     public static Player instance;
-    public ProjectileData projectileData;
+    public ProjectileData[] projectileData;
     [SerializeField] private ProjectileSpawner projectileSpawner;
     [SerializeField] private Dash dash;
     [SerializeField] private Transform shooterPosition;
@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
     {
         if (isShootHeld)
         {
-            IAction shootAction = new ShootAction(projectileData, transform.rotation, shooterPosition, true, projectileSpawner);
+            IAction shootAction = new ShootAction(projectileData, transform.rotation, shooterPosition, true, false, projectileSpawner);
             _actionWheel = new ActionWheel(shootAction);
             _actionWheel.UseAction();
             //Debug.Log("Pew!");
