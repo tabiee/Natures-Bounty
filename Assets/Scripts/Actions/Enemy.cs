@@ -11,7 +11,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] private bool useRandomProjectiles;
 
     private ActionWheel _actionWheel; 
-    private Transform targetPosition;
+    [HideInInspector] public Transform targetPosition;
+    public bool canAttack;
+
     private void Start()
     {
         targetPosition = GameObject.FindGameObjectWithTag("Player").transform;
@@ -23,10 +25,14 @@ public class Enemy : MonoBehaviour
     }
     void Shoot(Quaternion targetRotation)
     {
-        IAction shootAction = new ShootAction(projectileData, targetRotation, shooterPosition, false, useRandomProjectiles, projectileSpawner);
-        _actionWheel = new ActionWheel(shootAction);
-        _actionWheel.UseAction();
-        //Debug.Log("Pew!");
+        if (canAttack)
+        {
+            IAction shootAction = new ShootAction(projectileData, targetRotation, shooterPosition, false, useRandomProjectiles, projectileSpawner);
+            _actionWheel = new ActionWheel(shootAction);
+            _actionWheel.UseAction();
+            //Debug.Log("Pew!");
+        }
+
     }
     private Quaternion GetTargetPosition()
     {

@@ -2,34 +2,36 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyController : Enemy
+public class EnemyAI : Enemy
 {
     [SerializeField] private float lookRadius = 10f;  // Detection range
     [SerializeField] private float attackRadius = 5f; // Attack range
     [SerializeField] private float patrolTime = 5f;   // Time between patrols
 
-    Transform target;  // The player
+    
     NavMeshAgent agent; // Navmesh agent
     bool isPatrolling = false;
-
+    private void Awake()
+    {
+        agent = GetComponent<NavMeshAgent>();
+    }
     void Start()
     {
-        target = targetPosition.transform;
-        agent = GetComponent<NavMeshAgent>();
+        
         StartCoroutine(Patrol());
     }
 
     void Update()
     {
-        float distance = Vector3.Distance(target.position, transform.position);
+        float distance = Vector3.Distance(targetPosition.position, transform.position);
 
         if (distance <= lookRadius)
         {
-            agent.SetDestination(target.position);
+            agent.SetDestination(targetPosition.position);
             if (distance <= attackRadius)
             {
-                // Attack the target
-                // Add your attack code here
+
+                canAttack = true;
             }
         }
     }
