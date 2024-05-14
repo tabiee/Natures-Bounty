@@ -11,22 +11,25 @@ public class WeaponPickup : Pickup
         int itemCount = 0;
 
         //count the weapons
-        for (int i = 0; i < Player.instance.projectileData.Length; i++)
+        for (int i = 0; i < Player.instance.projectileDataPack.Length; i++)
         {
-            if (Player.instance.projectileData[i] != null)
+            if (Player.instance.projectileDataPack[i] != null)
             {
                 itemCount++;
             }
         }
 
+        Debug.Log("itemCount is: " + itemCount);
+
         //add to any empty array slot
         if (itemCount < 3)
         {
-            for (int i = 0; i < Player.instance.projectileData.Length; i++)
+            for (int i = 0; i < Player.instance.projectileDataPack.Length; i++)
             {
-                if (Player.instance.projectileData[i] = null)
+                if (Player.instance.projectileDataPack[i] == null)
                 {
-                    Player.instance.projectileData[i] = weapon;
+                    //Debug.Log("add to any empty array slot ran with this item: " + Player.instance.projectileData[i]);
+                    Player.instance.projectileDataPack[i] = weapon;
                     break;
                 }
             }
@@ -34,7 +37,9 @@ public class WeaponPickup : Pickup
         //else override the 1st one
         else
         {
-            Player.instance.projectileData[0] = weapon;
+            Debug.Log("override 1st one ran");
+
+            Player.instance.projectileDataPack[0] = weapon;
         }
     }
 }
