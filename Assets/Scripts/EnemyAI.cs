@@ -2,60 +2,97 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyAI : Enemy
+public class EnemyAI : MonoBehaviour
 {
-    [SerializeField] private float lookRadius = 10f;  // Detection range
-    [SerializeField] private float attackRadius = 5f; // Attack range
-    [SerializeField] private float patrolTime = 5f;   // Time between patrols
 
-    
-    NavMeshAgent agent; // Navmesh agent
-    bool isPatrolling = false;
+    private Enemy enemyScript;
+    public float lookRadius = 10f;  // Detection range
+    public float attackRadius = 5f; // Attack range
+    public float patrolTime = 5f;   // Time between patrols
+    public float speed = 2f;        // Enemy speed
+    private Rigidbody2D rb;
+
+    bool isAttacking = false;
+    [SerializeField] private bool canMoveWhenShoot;
     private void Awake()
     {
-        agent = GetComponent<NavMeshAgent>();
+        enemyScript = GetComponent<Enemy>();
+        rb = GetComponent<Rigidbody2D>();
     }
     void Start()
     {
-        
-        StartCoroutine(Patrol());
+        enemyScript.canAttack = false;
     }
 
     void Update()
     {
-        float distance = Vector3.Distance(targetPosition.position, transform.position);
-
-        if (distance <= lookRadius)
+        float distance = Vector2.Distance(enemyScript.targetPosition.position, transform.position);
+        
+        if (distance <= lookRadius && isAttacking == false)
         {
-            agent.SetDestination(targetPosition.position);
+            ChasePlayer();
+            
             if (distance <= attackRadius)
             {
+                AttackPlayer();
 
-                canAttack = true;
             }
         }
+
+        else
+        {
+            isAttacking = false;
+            enemyScript.canAttack = false;
+            rb.velocity = Vector2.zero;
+        }
+
     }
 
-    IEnumerator Patrol()
+    
+
+    private void AttackPlayer()
     {
-        while (true)
+       
+        isAttacking = true;
+        enemyScript.canAttack = true;
+
+        if (canMoveWhenShoot)
         {
-            if (!isPatrolling)
-            {
-                Vector3 randomDirection = Random.insideUnitSphere * lookRadius;
-                randomDirection += transform.position;
-                NavMeshHit hit;
-                NavMesh.SamplePosition(randomDirection, out hit, lookRadius, 1);
-                Vector3 finalPosition = hit.position;
 
-                agent.SetDestination(finalPosition);
-                isPatrolling = true;
-            }
-
-            if (!agent.pathPending && agent.remainingDistance < 0.5f)
-                isPatrolling = false;
-
-            yield return new WaitForSeconds(patrolTime);
         }
+
+        else
+            rb.velocity = Vector2.zero;
+
+
+
+    }
+
+    private void ChasePlayer()
+    {
+
+        isAttacking = false;
+        enemyScript.canAttack = false;
+        Vector2 direction = (enemyScript.targetPosition.position - transform.position).normalized;
+        rb.velocity = direction * speed;
+    }
+
+    public static Vector3 RandomNavSphere(Vector2 origin, float dist, int layermask)
+    {
+        Vector2 randDirection = Random.insideUnitSphere * dist;
+        randDirection += origin;
+
+        NavMeshHit navHit;
+        NavMesh.SamplePosition(randDirection, out navHit, dist, layermask);
+
+        return navHit.position;
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRadius);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, lookRadius);
     }
 }

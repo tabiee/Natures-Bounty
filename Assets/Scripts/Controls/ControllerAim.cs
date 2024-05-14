@@ -6,18 +6,25 @@ using UnityEngine.InputSystem;
 public class ControllerAim : MonoBehaviour
 {
     private Vector2 aimDirection;
+    [SerializeField] private ControllerHandler controllerHandler;
+
+
 
     // Update is called once per frame
     void Update()
     {
-        // Get the direction of the right stick
-        aimDirection = Gamepad.current.rightStick.ReadValue();
-
-        // If the right stick is moved, rotate the player to face the direction of the stick
-        if (aimDirection != Vector2.zero)
+        if (controllerHandler.controllerIsConnected)
         {
-            float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            // Get the direction of the right stick
+            aimDirection = Gamepad.current.rightStick.ReadValue();
+
+            // If the right stick is moved, rotate the player to face the direction of the stick
+            if (aimDirection != Vector2.zero)
+            {
+                float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            }
         }
+        
     }
 }
