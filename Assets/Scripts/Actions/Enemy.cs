@@ -5,9 +5,10 @@ using UnityEngine;
 //client
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private ProjectileData projectileData;
+    [SerializeField] private ProjectileData[] projectileData;
     [SerializeField] private ProjectileSpawner projectileSpawner;
     [SerializeField] private Transform shooterPosition;
+    [SerializeField] private bool useRandomProjectiles;
 
     private ActionWheel _actionWheel; 
     private Transform targetPosition;
@@ -22,7 +23,7 @@ public class Enemy : MonoBehaviour
     }
     void Shoot(Quaternion targetRotation)
     {
-        IAction shootAction = new ShootAction(projectileData, targetRotation, shooterPosition, false, projectileSpawner);
+        IAction shootAction = new ShootAction(projectileData, targetRotation, shooterPosition, false, useRandomProjectiles, projectileSpawner);
         _actionWheel = new ActionWheel(shootAction);
         _actionWheel.UseAction();
         //Debug.Log("Pew!");
