@@ -14,6 +14,7 @@ public class EnemyAI : MonoBehaviour
 
     bool isAttacking = false;
     [SerializeField] private bool canMoveWhenShoot;
+    [SerializeField] private bool isRanged;
     private void Awake()
     {
         enemyScript = GetComponent<Enemy>();
@@ -43,7 +44,6 @@ public class EnemyAI : MonoBehaviour
         {
             isAttacking = false;
             enemyScript.canAttack = false;
-            rb.velocity = Vector2.zero;
         }
 
     }
@@ -52,21 +52,24 @@ public class EnemyAI : MonoBehaviour
 
     private void AttackPlayer()
     {
-       
         isAttacking = true;
-        enemyScript.canAttack = true;
-
-        if (canMoveWhenShoot)
+        if (isRanged)
         {
+            
+            enemyScript.canAttack = true;
 
+            if (canMoveWhenShoot)
+            {
+
+            }
+
+            else
+                rb.velocity = Vector2.zero;
         }
 
-        else
-            rb.velocity = Vector2.zero;
-
-
-
     }
+
+    
 
     private void ChasePlayer()
     {
