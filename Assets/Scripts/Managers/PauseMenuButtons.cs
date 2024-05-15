@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+
 
 
 
@@ -17,6 +19,7 @@ public class PauseMenuButtons : MonoBehaviour
     private PlayerInput input;
     public string MainMenuScene = "MainMenu";
     public string LevelScene = "2DAapo";
+
 
     private void Awake()
     {
@@ -36,12 +39,23 @@ public class PauseMenuButtons : MonoBehaviour
         restartButton.onClick.AddListener(RestartGame);
         exitButton.onClick.AddListener(ExitGame);
 
-
     }
 
     // Update is called once per frame
     void Update()
     {
+        GameObject selected = EventSystem.current.currentSelectedGameObject;
+        if (selected != null)
+        {
+            Selectable selectable = selected.GetComponent<Selectable>();
+            if (selectable != null)
+            {
+                ColorBlock colors = selectable.colors;
+                colors.selectedColor = Color.white; // Change this to your desired highlight color
+                selectable.colors = colors;
+            }
+        }
+
         if (controllerHandler.controllerIsConnected)
         {
             if (Gamepad.current.startButton.wasPressedThisFrame)
@@ -49,11 +63,14 @@ public class PauseMenuButtons : MonoBehaviour
                 if (!menuIsOpen)
                 {
                     PauseGame();
+                    
                 }
 
                 else
                     ContinueGame();
             }
+
+           
         }
 
         if (!controllerHandler.controllerIsConnected)
