@@ -61,7 +61,6 @@ public class MainMenuButtons : MonoBehaviour
     void ExitGame()
     {
         Application.Quit();
-        EditorApplication.ExitPlaymode();
 
     }
 }
