@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 4883301179452587261}
   - component: {fileID: 2020522200609998822}
   - component: {fileID: 1784217609752163335}
+  - component: {fileID: 4070705718288776798}
   m_Layer: 6
   m_Name: SmallScrap
   m_TagString: Untagged
@@ -166,3 +167,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickup: {fileID: 11400000, guid: b177abe7bb1873a4c883bcfa09077012, type: 2}
+--- !u!50 &4070705718288776798
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7365580245807429125}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.25
+  m_LinearDrag: 1
+  m_AngularDrag: 1
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

@@ -69,6 +69,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "ReverseSwap",
+                    "type": "Button",
+                    "id": "e0768f2e-aa49-4774-a7b9-9de04ddfd3fe",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "PauseMenu",
                     "type": "Button",
                     "id": "00ee47e0-4bdf-4304-9f80-155e1ea46d81",
@@ -302,7 +311,7 @@
                 {
                     "name": "",
                     "id": "135e10a5-a89f-45c3-b91f-183ef52b06fd",
-                    "path": "<Keyboard>/r",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
@@ -340,6 +349,28 @@
                     "processors": "",
                     "groups": "KeyboardMouse",
                     "action": "PauseMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "75b0a4d7-1f6a-491a-9827-9c4b3d582008",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "ReverseSwap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8119db77-ca7e-4f14-b9dd-345e3d0ad438",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ReverseSwap",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -68,7 +68,7 @@ public class ProjectileSpawner : MonoBehaviour
             for (int j = 0; j < projectileData.projectilesPerBurst; j++)
             {
                 Vector2 pos = FindProjectileSpawnLoc(currentAngle);
-                bullet = ObjectPool.instance.GetObject(projectileData.projectilePrefab);
+                bullet = ObjectPool.instance.GetObject(projectileData.projectilePrefab, transform.position, Quaternion.identity);
                 bullet.transform.position = pos;
 
                 if (bullet.TryGetComponent(out Projectile proj))

@@ -8,6 +8,11 @@ public class CollectPickup : MonoBehaviour, IInteractable
     public void EnterInteraction()
     {
         pickup.PickupUsed();
-        Destroy(this.gameObject);
+        ReturnToPool();
+    }
+    private void ReturnToPool()
+    {
+        gameObject.SetActive(false);
+        ObjectPool.instance.ReturnObject(gameObject);
     }
 }

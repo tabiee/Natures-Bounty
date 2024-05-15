@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
 
     private PlayerInput input;
     private InputAction swapInput;
+    private InputAction reverseSwapInput;
     private void Awake()
     {
         if (instance != null)
@@ -38,6 +39,7 @@ public class Player : MonoBehaviour
         shooterPosition = this.transform;
         input = GetComponent<PlayerInput>();
         swapInput = input.actions["Swap"];
+        reverseSwapInput = input.actions["ReverseSwap"];
     }
     private void Update()
     {
@@ -80,6 +82,21 @@ public class Player : MonoBehaviour
         {
             Debug.Log("swapped");
             currentIndex = (currentIndex + 1) % projectileDataPack.Length;
+
+            //if that slot is empty, go to the next one
+            if (projectileDataPack[currentIndex] != null)
+            {
+                currentProjectile = projectileDataPack[currentIndex];
+            }
+            else
+            {
+                SwapWeapon();
+            }
+        }
+        if (reverseSwapInput.triggered)
+        {
+            Debug.Log("swapped");
+            currentIndex = (currentIndex + projectileDataPack.Length - 1) % projectileDataPack.Length;
 
             //if that slot is empty, go to the next one
             if (projectileDataPack[currentIndex] != null)

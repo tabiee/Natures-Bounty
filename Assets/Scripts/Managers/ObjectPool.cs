@@ -18,17 +18,19 @@ public class ObjectPool : MonoBehaviour
         instance = this;
     }
 
-    public GameObject GetObject(GameObject prefab)
+    public GameObject GetObject(GameObject prefab, Vector3 position, Quaternion rotation)
     {
         if (pooledObjects.ContainsKey(prefab) && pooledObjects[prefab].Count > 0)
         {
             GameObject obj = pooledObjects[prefab].Dequeue();
+            obj.transform.position = position;
+            obj.transform.rotation = rotation;
             obj.SetActive(true);
             return obj;
         }
         else
         {
-            GameObject obj = Instantiate(prefab);
+            GameObject obj = Instantiate(prefab, position, rotation);
             if (!pooledObjects.ContainsKey(prefab))
             {
                 pooledObjects[prefab] = new Queue<GameObject>();

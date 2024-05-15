@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 4588177398689852438}
   - component: {fileID: 3304648473642561875}
   - component: {fileID: 8622206357977103167}
+  - component: {fileID: 3618391860676551944}
   m_Layer: 6
   m_Name: MajorHP
   m_TagString: Untagged
@@ -166,3 +167,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickup: {fileID: 11400000, guid: dc82260bdb0847443a61432f6203ff10, type: 2}
+--- !u!50 &3618391860676551944
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8599259863348743913}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.25
+  m_LinearDrag: 1
+  m_AngularDrag: 1
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

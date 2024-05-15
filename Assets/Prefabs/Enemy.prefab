@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 2791880851459148943}
   - component: {fileID: 5463203301385082189}
   - component: {fileID: 9125889490242526639}
+  - component: {fileID: 108146259788681499}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
@@ -141,7 +142,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d0e4c44d684fc8c428cc252ee445fd9e, type: 2}
   projectileSpawner: {fileID: 1921600446150290036}
   shooterPosition: {fileID: 0}
-  useRandomProjectiles: 0
+  cycleProjectiles: 0
   targetPosition: {fileID: 0}
   canAttack: 0
 --- !u!114 &1921600446150290036
@@ -169,8 +170,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxUnitHealth: 5
-  invincibilityFrames: 0.5
+  invincibilityFrames: 0
   healthBar: {fileID: 5976538609101220926}
+  itemDrops: {fileID: 108146259788681499}
 --- !u!58 &5463203301385082189
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -232,7 +234,27 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!114 &108146259788681499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4858869224859623104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d99547904da712419ab7553a4f27acf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabPool:
+  - {fileID: 269186738460572858, guid: ce1c8a68c73d5f544a868394330d61ac, type: 3}
+  - {fileID: 2780668659650421771, guid: 6b9f9710be3f25641ae9bf59c8cc3f89, type: 3}
+  amount: 4
+  spawnRange: 1
+  bounceForce: 0.3
+  spawnOnStart: 0
+  applyBounce: 1
 --- !u!1 &6191422501004026334
 GameObject:
   m_ObjectHideFlags: 0

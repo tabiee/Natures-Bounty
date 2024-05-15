@@ -8,6 +8,7 @@ public class UnitHealth : MonoBehaviour
     [SerializeField] private int maxUnitHealth;
     [SerializeField] private float invincibilityFrames = 0.5f;
     [SerializeField] private Image healthBar;
+    [SerializeField] private ObjectGenerator itemDrops;
     public HealthSystem unitHealth;
     private void Awake()
     {
@@ -35,8 +36,17 @@ public class UnitHealth : MonoBehaviour
     }
     void UnitKilled()
     {
-        Destroy(this.gameObject);
-        //can be changed to use objectpool later when the generators are made.
-        //np it easy
+        if (itemDrops != null)
+        {
+            itemDrops.SpawnPrefab();
+        }
+
+        ReturnToPool();
+    }
+
+    private void ReturnToPool()
+    {
+        gameObject.SetActive(false);
+        ObjectPool.instance.ReturnObject(gameObject);
     }
 }
