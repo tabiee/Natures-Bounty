@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private ProjectileData[] projectileData;
     [SerializeField] private ProjectileSpawner projectileSpawner;
     [SerializeField] private Transform shooterPosition;
-    [SerializeField] private bool useRandomProjectiles;
+    [SerializeField] private bool cycleProjectiles;
 
     private ActionWheel _actionWheel; 
     [HideInInspector] public Transform targetPosition;
@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour
     {
         if (canAttack)
         {
-            IAction shootAction = new ShootAction(projectileData, targetRotation, shooterPosition, false, useRandomProjectiles, projectileSpawner);
+            IAction shootAction = new ShootAction(projectileData, targetRotation, shooterPosition, false, cycleProjectiles, projectileSpawner);
             _actionWheel = new ActionWheel(shootAction);
             _actionWheel.UseAction();
             //Debug.Log("Pew!");
