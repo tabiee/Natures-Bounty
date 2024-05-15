@@ -35,7 +35,8 @@ public class PlayerHealth : MonoBehaviour
     }
     public void DamagePlayer(int amount)
     {
-        playerHealth.DealDamage(amount, canBeDamaged);
+        playerHealth.DealDamage(amount, invincibilityFrames);
+        canBeDamaged = false;
         StartCoroutine(DamagedInvincibility());
         if (playerHealth.IsDead())
         {
@@ -53,7 +54,7 @@ public class PlayerHealth : MonoBehaviour
     }
     IEnumerator DamagedInvincibility()
     {
-        canBeDamaged = false;
+        //wait between damage
         yield return new WaitForSeconds(invincibilityFrames);
         canBeDamaged = true;
     }

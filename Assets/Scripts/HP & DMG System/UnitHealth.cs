@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class UnitHealth : MonoBehaviour
 {
     [SerializeField] private int maxUnitHealth;
+    [SerializeField] private float invincibilityFrames = 0.5f;
     [SerializeField] private Image healthBar;
     public HealthSystem unitHealth;
-    public bool canBeDamaged = true;
     private void Awake()
     {
         unitHealth = new HealthSystem(maxUnitHealth, maxUnitHealth);
@@ -23,7 +23,7 @@ public class UnitHealth : MonoBehaviour
     }
     public void DamageEnemy(int amount)
     {
-        unitHealth.DealDamage(amount, canBeDamaged);
+        unitHealth.DealDamage(amount, invincibilityFrames);
         if (unitHealth.IsDead())
         {
             UnitKilled();

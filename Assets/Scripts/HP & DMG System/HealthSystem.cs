@@ -6,6 +6,8 @@ public class HealthSystem
 {
     private int currentHealth;
     private int currentMaxHealth;
+    //private bool canBeDamaged = true;
+    private float invincibilityTimer = 0.0f;
     public int Health
     {
         get 
@@ -31,7 +33,6 @@ public class HealthSystem
             currentMaxHealth = value;
         }
     }
-
     public float GetHealthPercentage()
     {
         return (float)currentHealth / currentMaxHealth;
@@ -43,10 +44,14 @@ public class HealthSystem
         currentMaxHealth = maxHealth;
     }
 
-    public void DealDamage(int amount, bool canBeDamaged)
+    public void DealDamage(int amount, float invincibilityFrames)
     {
-        if (canBeDamaged)
+        //Debug.Log("1 DealDamage called with: " + invincibilityFrames);
+
+        if (CanBeDamaged())
         {
+            invincibilityTimer = Time.time + invincibilityFrames;
+
             currentHealth -= amount;
             if (currentHealth < 0)
             {
@@ -56,6 +61,8 @@ public class HealthSystem
             {
                 currentHealth = currentMaxHealth;
             }
+
+            //Debug.Log("2 DealDamage called");
         }
     }
     public void HealDamage(int amount)
@@ -81,5 +88,10 @@ public class HealthSystem
         {
             return false;
         }
+    }
+
+    private bool CanBeDamaged()
+    {
+        return Time.time > invincibilityTimer;
     }
 }

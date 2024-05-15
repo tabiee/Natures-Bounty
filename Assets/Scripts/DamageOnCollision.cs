@@ -5,8 +5,20 @@ using UnityEngine;
 public class DamageOnCollision : MonoBehaviour, IInteractable
 {
     [SerializeField] private int collisionDamage = 1;
+    private bool playerNearby;
     public void EnterInteraction()
     {
-        PlayerHealth.instance.DamagePlayer(collisionDamage);
+        playerNearby = true;
+    }
+    public void ExitInteraction()
+    {
+        playerNearby = false;
+    }
+    private void Update()
+    {
+        if (playerNearby)
+        {
+            PlayerHealth.instance.DamagePlayer(collisionDamage);
+        }
     }
 }
