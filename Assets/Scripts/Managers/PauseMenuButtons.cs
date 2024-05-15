@@ -11,22 +11,24 @@ public class PauseMenuButtons : MonoBehaviour
 {
     [SerializeField] private GameObject Menu;
     bool menuIsOpen;
-    [SerializeField] private ControllerHandler controllerHandler;
+    private ControllerHandler controllerHandler;
     public Button continueButton;
     public Button restartButton;
     public Button exitButton;
     private InputAction pauseInput;
     private PlayerInput input;
     public string MainMenuScene = "MainMenu";
-    public string LevelScene = "2DAapo";
+    public string FirstLevel = "Room 0";
 
 
     private void Awake()
     {
         input = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInput>();
+        controllerHandler = GameObject.FindGameObjectWithTag("GameManager").GetComponent<ControllerHandler>();
+
     }
 
-   
+
 
     // Start is called before the first frame update
     void Start()
@@ -115,13 +117,18 @@ public class PauseMenuButtons : MonoBehaviour
     public void RestartGame()
     {
         Debug.Log("Game Restarted");
-        SceneManager.LoadScene(LevelScene);
-
+        SceneManager.LoadScene(FirstLevel);
+        Menu.SetActive(false);
+        menuIsOpen = false;
+        Time.timeScale = 1;
     }
 
     public void ExitGame()
     {
         Debug.Log("Game Exited");
         SceneManager.LoadScene(MainMenuScene);
+        Menu.SetActive(false);
+        menuIsOpen = false;
+        Time.timeScale = 1;
     }
 }

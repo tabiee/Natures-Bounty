@@ -6,7 +6,12 @@ using UnityEngine.InputSystem;
 public class ControllerAim : MonoBehaviour
 {
     private Vector2 aimDirection;
-    [SerializeField] private ControllerHandler controllerHandler;
+    private ControllerHandler controllerHandler;
+
+    private void Awake()
+    {
+        controllerHandler = GameObject.FindGameObjectWithTag("GameManager").GetComponent<ControllerHandler>();
+    }
 
 
 
