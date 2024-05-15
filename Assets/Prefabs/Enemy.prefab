@@ -114,7 +114,7 @@ Transform:
   m_GameObject: {fileID: 4858869224859623104}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.09, y: 4.01, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -143,7 +143,7 @@ MonoBehaviour:
   shooterPosition: {fileID: 0}
   useRandomProjectiles: 0
   targetPosition: {fileID: 0}
-  canAttack: 1
+  canAttack: 0
 --- !u!114 &1921600446150290036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,8 +169,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxUnitHealth: 5
+  invincibilityFrames: 0.5
   healthBar: {fileID: 5976538609101220926}
-  canBeDamaged: 1
 --- !u!58 &5463203301385082189
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -9,6 +9,7 @@ public class ScrapPickup : Pickup
     public override void PickupUsed()
     {
         //increase money amount or whatever
+        ScoreManager.instance.UpdateScrapCount(scrapAmount);
         Debug.Log("wew money! " + scrapAmount);
     }
 }
