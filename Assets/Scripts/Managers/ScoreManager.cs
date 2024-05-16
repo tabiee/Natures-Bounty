@@ -30,6 +30,6 @@ public class ScoreManager : MonoBehaviour
     public void UpdateScrapCount(int amount)
     {
         scrapScore += amount;
-        text.text = "Scrap: " + scrapScore;
+        text.text = "" + scrapScore;
     }
 }

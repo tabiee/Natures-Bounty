@@ -31,14 +31,17 @@ public class ObjectGenerator : MonoBehaviour
         Vector3 randomOffset = Random.insideUnitCircle * spawnRange;
         Vector3 spawnPosition = transform.position + randomOffset;
 
-        GameObject prefabToSpawn = prefabPool[Random.Range(0, prefabPool.Length)];
-        spawnedObject = ObjectPool.instance.GetObject(prefabToSpawn, spawnPosition, Quaternion.identity);
-
-        Rigidbody2D spawnedRigidbody = spawnedObject.GetComponent<Rigidbody2D>();
-        if (spawnedRigidbody != null && applyBounce)
+        if (prefabPool.Length > 0)
         {
-            Vector2 bounceDirection = spawnedObject.transform.position - transform.position;
-            spawnedRigidbody.AddRelativeForce(bounceDirection.normalized * bounceForce, ForceMode2D.Impulse);
+            GameObject prefabToSpawn = prefabPool[Random.Range(0, prefabPool.Length)];
+            spawnedObject = ObjectPool.instance.GetObject(prefabToSpawn, spawnPosition, Quaternion.identity);
+
+            Rigidbody2D spawnedRigidbody = spawnedObject.GetComponent<Rigidbody2D>();
+            if (spawnedRigidbody != null && applyBounce)
+            {
+                Vector2 bounceDirection = spawnedObject.transform.position - transform.position;
+                spawnedRigidbody.AddRelativeForce(bounceDirection.normalized * bounceForce, ForceMode2D.Impulse);
+            }
         }
     }
 }

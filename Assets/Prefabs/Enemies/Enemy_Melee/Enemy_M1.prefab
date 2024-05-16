@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxUnitHealth: 5
-  invincibilityFrames: 0.6
+  invincibilityFrames: 0
   healthBar: {fileID: 5097617850895044303}
   itemDrops: {fileID: 5461981388354457054}
   unitAudioSource: {fileID: -5643783204698309032}
