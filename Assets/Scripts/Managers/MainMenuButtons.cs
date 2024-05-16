@@ -14,6 +14,7 @@ public class MainMenuButtons : MonoBehaviour
     [SerializeField] private Button optionsReturnButton;
     [SerializeField] private string LevelScene = "2DAapo";
     [SerializeField] private GameObject optionItems;
+    private Color32 highlightcolor = new Color32(196, 174, 226, 255);
 
 
     // Start is called before the first frame update
@@ -36,7 +37,7 @@ public class MainMenuButtons : MonoBehaviour
             if (selectable != null)
             {
                 ColorBlock colors = selectable.colors;
-                colors.selectedColor = Color.white; // Change this to your desired highlight color
+                colors.selectedColor = highlightcolor; // Change this to your desired highlight color
                 selectable.colors = colors;
             }
         }
