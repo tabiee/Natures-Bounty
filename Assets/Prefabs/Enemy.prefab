@@ -144,7 +144,7 @@ MonoBehaviour:
   shooterPosition: {fileID: 0}
   cycleProjectiles: 0
   targetPosition: {fileID: 0}
-  canAttack: 0
+  canAttack: 1
 --- !u!114 &1921600446150290036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxUnitHealth: 5
-  invincibilityFrames: 0.5
+  invincibilityFrames: 0
   healthBar: {fileID: 5976538609101220926}
   itemDrops: {fileID: 108146259788681499}
 --- !u!58 &5463203301385082189

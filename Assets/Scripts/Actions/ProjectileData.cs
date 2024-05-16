@@ -11,6 +11,9 @@ public class ProjectileData : ScriptableObject
     [Tooltip("The projectile class of each instance of the prefab.")]
     public Projectile projectile;
 
+    [Tooltip("The sound that plays when the projectile is shot.")]
+    public AudioClip audioClip;
+
     [Tooltip("Time between each projectile/all coroutine loops.")]
     public float rateOfFire = 1f;
 
@@ -46,15 +49,16 @@ public class ProjectileData : ScriptableObject
     [Tooltip("How long until the projectile is destroyed.")]
     public float projectileLifetime = 1f;
 
-    [Tooltip("How far the entity is pushed when hit by the projectile.")]
-    public float projectileKnockback = 1f;
-
     [Tooltip("How big and/or what shape the bullet is.")]
     public Vector3 projectileShape = new Vector3(1f, 1f, 1f);
 
     [Tooltip("How much damage it does on hit.")]
     public int damageDealt = 1;
 
-    [Tooltip("What it does when colliding with entity/object.")]
-    public EffectOnHit effectOnHit;
+    //[Tooltip("How far the entity is pushed when hit by the projectile.")]
+    //public float projectileKnockback = 1f;
+
+
+    //[Tooltip("What it does when colliding with entity/object.")]
+    //public EffectOnHit effectOnHit;
 }

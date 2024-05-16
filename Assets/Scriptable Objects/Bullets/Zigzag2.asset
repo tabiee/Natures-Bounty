@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 2196239348347350715, guid: dda9d553a6e7f104ba5edda1d59df681, type: 3}
   projectile: {fileID: 1474996939730525233, guid: dda9d553a6e7f104ba5edda1d59df681, type: 3}
+  audioClip: {fileID: 8300000, guid: 3d766c2d5c8d1244283d39a58fb5d2cc, type: 3}
   rateOfFire: 1
   projectilesPerBurst: 8
   angleSpread: 60
@@ -23,7 +24,5 @@ MonoBehaviour:
   oscillate: 1
   projectileSpeed: 3
   projectileLifetime: 8
-  projectileKnockback: 1
   projectileShape: {x: 1, y: 1, z: 1}
   damageDealt: 1
-  effectOnHit: {fileID: 0}

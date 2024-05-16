@@ -9,10 +9,16 @@ public class ProjectileSpawner : MonoBehaviour
     private ProjectileData[] projectileDataPack;
     private Quaternion targetRotation;
     private Transform shooterPosition;
+    private AudioSource playerAudio;
     private float startingDistance = 0.1f;
     private bool isShooting;
     private bool isShooterPlayer;
     private int currentIndex = -1;
+
+    private void Start()
+    {
+        playerAudio = Player.instance.gameObject.GetComponent<AudioSource>();
+    }
 
     public void StartShooting(ProjectileData[] projData, Quaternion targetRot, Transform shooterPos, bool isPlayer, bool isCycling)
     {
@@ -43,6 +49,8 @@ public class ProjectileSpawner : MonoBehaviour
     private IEnumerator SpawnProjectiles()
     {
         isShooting = true;
+        playerAudio.clip = projectileData.audioClip;
+        playerAudio.Play();
 
         float startAngle, currentAngle, angleStep, endAngle;
         float timeBetweenProjectiles = 0f;
@@ -70,6 +78,7 @@ public class ProjectileSpawner : MonoBehaviour
                 Vector2 pos = FindProjectileSpawnLoc(currentAngle);
                 bullet = ObjectPool.instance.GetObject(projectileData.projectilePrefab, transform.position, Quaternion.identity);
                 bullet.transform.position = pos;
+                bullet.transform.localScale = projectileData.projectileShape;
 
                 if (bullet.TryGetComponent(out Projectile proj))
                 {
