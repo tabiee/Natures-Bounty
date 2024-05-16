@@ -15,6 +15,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 2196239348347350715, guid: 338870f5a7859c449b14fa1b08d8be56, type: 3}
   projectile: {fileID: 1474996939730525233, guid: 338870f5a7859c449b14fa1b08d8be56, type: 3}
   audioClip: {fileID: 8300000, guid: 3d766c2d5c8d1244283d39a58fb5d2cc, type: 3}
+  weaponSprite: {fileID: 21300000, guid: 7a2c12e951882a947bff9f7c336390ae, type: 3}
   rateOfFire: 0.5
   projectilesPerBurst: 5
   angleSpread: 230

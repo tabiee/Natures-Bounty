@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 219605123783395730}
   - component: {fileID: 2921647407141598744}
   - component: {fileID: 5333559562974397604}
+  - component: {fileID: 9099969130230350253}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -88,3 +89,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrapScore: 0
   text: {fileID: 0}
+--- !u!114 &9099969130230350253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207590644963074145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3127bd617d5ab84295aad42ed23e6fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

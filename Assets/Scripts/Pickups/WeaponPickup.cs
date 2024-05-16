@@ -30,6 +30,7 @@ public class WeaponPickup : Pickup
                 {
                     //Debug.Log("add to any empty array slot ran with this item: " + Player.instance.projectileData[i]);
                     Player.instance.projectileDataPack[i] = weapon;
+                    WeaponDisplay.instance.weaponSprites[i].sprite = weapon.weaponSprite;
                     break;
                 }
             }
@@ -40,6 +41,7 @@ public class WeaponPickup : Pickup
             Debug.Log("override 1st one ran");
 
             Player.instance.projectileDataPack[0] = weapon;
+            WeaponDisplay.instance.weaponSprites[0].sprite = weapon.weaponSprite;
         }
     }
 }

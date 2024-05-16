@@ -86,7 +86,7 @@ public class Player : MonoBehaviour
             //if that slot is empty, go to the next one
             if (projectileDataPack[currentIndex] != null)
             {
-                currentProjectile = projectileDataPack[currentIndex];
+                SetWeapon();
             }
             else
             {
@@ -101,12 +101,17 @@ public class Player : MonoBehaviour
             //if that slot is empty, go to the next one
             if (projectileDataPack[currentIndex] != null)
             {
-                currentProjectile = projectileDataPack[currentIndex];
+                SetWeapon();
             }
             else
             {
                 SwapWeapon();
             }
         }
+    }
+    void SetWeapon()
+    {
+        currentProjectile = projectileDataPack[currentIndex];
+        WeaponDisplay.instance.UpdateSelectedWeapon(currentIndex, currentProjectile.weaponSprite);
     }
 }

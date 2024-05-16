@@ -14,6 +14,9 @@ public class ProjectileData : ScriptableObject
     [Tooltip("The sound that plays when the projectile is shot.")]
     public AudioClip audioClip;
 
+    [Tooltip("The sprite that appears in the player's hand and weapon UI.")]
+    public Sprite weaponSprite;
+
     [Tooltip("Time between each projectile/all coroutine loops.")]
     public float rateOfFire = 1f;
 
