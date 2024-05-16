@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37d145545f1dbd341bbb2fd8bd1bc749, type: 3}
   m_Name: _Gun
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 2196239348347350715, guid: 338870f5a7859c449b14fa1b08d8be56, type: 3}
-  projectile: {fileID: 1474996939730525233, guid: 338870f5a7859c449b14fa1b08d8be56, type: 3}
+  projectilePrefab: {fileID: 2196239348347350715, guid: f17b651ae77e80c48a0b6ca556b92664, type: 3}
+  projectile: {fileID: 1474996939730525233, guid: f17b651ae77e80c48a0b6ca556b92664, type: 3}
   audioClip: {fileID: 8300000, guid: 2cc5a8201f4164e49b4a5de840fa0fe1, type: 3}
   weaponSprite: {fileID: 21300000, guid: 60bafa97b68ef9a4a828be8ce3b626f0, type: 3}
   rateOfFire: 0.15
