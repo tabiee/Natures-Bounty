@@ -11,22 +11,17 @@ public class PauseMenuButtons : MonoBehaviour
 {
     [SerializeField] private GameObject Menu;
     bool menuIsOpen;
-    private ControllerHandler controllerHandler;
+   [SerializeField] private ControllerHandler controllerHandler;
     public Button continueButton;
     public Button restartButton;
     public Button exitButton;
     private InputAction pauseInput;
-    private PlayerInput input;
+   [SerializeField] private PlayerInput input;
     public string MainMenuScene = "MainMenu";
     public string FirstLevel = "Room 0";
 
 
-    private void Awake()
-    {
-        input = GameObject.Find("Gun").GetComponent<PlayerInput>();
-        controllerHandler = GameObject.FindGameObjectWithTag("GameManager").GetComponent<ControllerHandler>();
-
-    }
+ 
 
 
 

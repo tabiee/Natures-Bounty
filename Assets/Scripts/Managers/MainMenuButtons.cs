@@ -12,7 +12,7 @@ public class MainMenuButtons : MonoBehaviour
     [SerializeField] private Button optionsButton;
     [SerializeField] private Button exitGameButton;
     [SerializeField] private Button optionsReturnButton;
-    [SerializeField] private string LevelScene = "2DAapo";
+    [SerializeField] private string LevelScene;
     [SerializeField] private GameObject optionItems;
     private Color32 highlightcolor = new Color32(196, 174, 226, 255);
 
