@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        targetPosition = GameObject.FindGameObjectWithTag("Player").transform;
+        targetPosition = Player.instance.gameObject.transform;
         shooterPosition = this.transform;
     }
     private void Update()

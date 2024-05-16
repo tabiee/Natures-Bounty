@@ -366,7 +366,7 @@ MonoBehaviour:
   maxDodgeDistance: 10
   isAttacking: 0
   isChasing: 0
-  canMoveWhenShoot: 1
+  canMoveWhenShoot: 0
   isRanged: 1
 --- !u!1001 &891289014128233292
 PrefabInstance:
