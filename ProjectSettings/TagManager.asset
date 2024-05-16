@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - Environment
   - GameManager
+  - ScoreUI
+  - Spawn
   layers:
   - Default
   - TransparentFX

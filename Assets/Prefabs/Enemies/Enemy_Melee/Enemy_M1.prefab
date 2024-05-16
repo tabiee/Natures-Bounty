@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxUnitHealth: 5
-  invincibilityFrames: 0.5
+  invincibilityFrames: 0.6
   healthBar: {fileID: 5097617850895044303}
   itemDrops: {fileID: 5461981388354457054}
 --- !u!58 &2268419577760490705
@@ -227,6 +227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lookRadius: 10
   attackRadius: 0
+  meleeAttackRadius: 1.5
   speed: 2
   dodgeCooldown: 2
   maxDodgeDistance: 10
@@ -415,6 +416,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2949337691810331461}
   - component: {fileID: 2780755368298215902}
+  - component: {fileID: 4158663979998289618}
   m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
@@ -489,6 +491,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &4158663979998289618
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7718537759232787518}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2052f7f5a166caa4c9ff7ee74c2947b6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7886610037448667675
 GameObject:
   m_ObjectHideFlags: 0
