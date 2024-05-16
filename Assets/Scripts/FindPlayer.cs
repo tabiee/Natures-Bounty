@@ -14,7 +14,7 @@ public class FindPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        vcam.Follow = GameObject.FindGameObjectWithTag("Player").transform;
+        vcam.Follow = Player.instance.gameObject.transform;
     }
 
     // Update is called once per frame

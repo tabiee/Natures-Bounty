@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -18,6 +19,13 @@ public class ScoreManager : MonoBehaviour
             Debug.LogWarning("There was more than one ScoreManager in the scene");
         }
         instance = this;
+
+        
+    }
+
+    private void Start()
+    {
+        
     }
     public void UpdateScrapCount(int amount)
     {

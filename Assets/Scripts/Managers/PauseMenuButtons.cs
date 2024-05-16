@@ -23,7 +23,7 @@ public class PauseMenuButtons : MonoBehaviour
 
     private void Awake()
     {
-        input = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInput>();
+        input = GameObject.Find("Gun").GetComponent<PlayerInput>();
         controllerHandler = GameObject.FindGameObjectWithTag("GameManager").GetComponent<ControllerHandler>();
 
     }

@@ -9,6 +9,7 @@ public class EnemyAI : MonoBehaviour
     [Header("EnemyInfo")]
     [SerializeField] private float lookRadius = 10f;  // Detection range
     [SerializeField] private float attackRadius = 5f; // Attack range
+    [SerializeField] private float meleeAttackRadius = 0.5f; // Attack range
     [SerializeField] private float speed = 2f;        // Enemy speed
     [SerializeField] private float dodgeCooldown = 2f;
     [SerializeField] private float maxDodgeDistance = 10f;
@@ -19,6 +20,7 @@ public class EnemyAI : MonoBehaviour
     public bool isAttacking = false;
     public bool isChasing = false;
     private Vector2 randomMovetargetPosition;
+    private Animator anim;
 
 
     [Header("EnemyType")]
@@ -29,6 +31,7 @@ public class EnemyAI : MonoBehaviour
     {
         enemyScript = GetComponent<Enemy>();
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponentInChildren<Animator>();
     }
     void Start()
     {
@@ -55,7 +58,12 @@ public class EnemyAI : MonoBehaviour
         
             }
 
-           
+            if(distance <= meleeAttackRadius && !isRanged)
+            {
+                anim.SetTrigger("Attack");
+            }
+
+
         }
         
 
@@ -67,12 +75,25 @@ public class EnemyAI : MonoBehaviour
             rb.velocity = Vector2.zero;
         }
 
+        if(distance > attackRadius)
+        {
+            anim.ResetTrigger("Attack");
+
+        }
+
+        if(distance > meleeAttackRadius && !isRanged)
+        {
+            anim.ResetTrigger("Attack");
+
+        }
+
     }
 
     
 
     private void AttackPlayer()
     {
+        anim.SetTrigger("Attack");
         isChasing = false;
         isAttacking = true;
         if (isRanged)
@@ -117,7 +138,6 @@ public class EnemyAI : MonoBehaviour
 
     private void ChasePlayer()
     {
-        Debug.Log("Chase");
         isChasing = true;
         isAttacking = false;
         enemyScript.canAttack = false;
