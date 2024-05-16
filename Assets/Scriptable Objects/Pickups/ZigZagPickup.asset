@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a393af83d4f5ef14cbe55f16db7131d6, type: 3}
   m_Name: ZigZagPickup
   m_EditorClassIdentifier: 
+  pickupSFX: {fileID: 8300000, guid: 27fcdc7828bf30f458cf3c6a4eeb15bd, type: 3}
   weapon: {fileID: 11400000, guid: d0e4c44d684fc8c428cc252ee445fd9e, type: 2}

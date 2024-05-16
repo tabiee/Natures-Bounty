@@ -8,6 +8,7 @@ public class WeaponDisplay : MonoBehaviour
     public static WeaponDisplay instance;
 
     [SerializeField] private SpriteRenderer activeSprite;
+    [SerializeField] private AudioClip weaponSwapAudio;
     public Image[] weaponSprites;
     private void Awake()
     {
@@ -23,10 +24,12 @@ public class WeaponDisplay : MonoBehaviour
     }
     public void UpdateSelectedWeapon(int index, Sprite sprite)
     {
+        activeSprite.sprite = sprite;
+        AudioManager.instance.sfxSource.clip = weaponSwapAudio;
+        AudioManager.instance.sfxSource.Play();
+
         for (int i = 0; i < weaponSprites.Length; i++)
         {
-            activeSprite.sprite = sprite;
-
             if (i == index)
             {
                 // Set the alpha of the selected weapon to 1

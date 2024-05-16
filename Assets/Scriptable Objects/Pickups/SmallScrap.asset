@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d592fbfced3507740ad529dae21cac34, type: 3}
   m_Name: SmallScrap
   m_EditorClassIdentifier: 
+  pickupSFX: {fileID: 8300000, guid: 8b0ac9c991144c04db979a770248107b, type: 3}
   scrapAmount: 3

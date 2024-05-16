@@ -6,6 +6,7 @@ using UnityEngine;
 public class Dash : MonoBehaviour
 {
     [SerializeField] private GameObject dashParticle;
+    [SerializeField] private AudioClip dashAudio;
     public float dashForce = 2f;
     public float dashDuration = 1f;
     public float dashCooldown = 3f;
@@ -29,6 +30,9 @@ public class Dash : MonoBehaviour
     }
     void StartDashing()
     {
+        AudioManager.instance.dashSource.clip = dashAudio;
+        AudioManager.instance.dashSource.Play();
+
         isDashing = true;
         PlayerHealth.instance.canBeDamaged = false;
         dashParticle.SetActive(true);

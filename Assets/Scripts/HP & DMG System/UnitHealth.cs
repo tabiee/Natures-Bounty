@@ -9,6 +9,10 @@ public class UnitHealth : MonoBehaviour
     [SerializeField] private float invincibilityFrames = 0.5f;
     [SerializeField] private Image healthBar;
     [SerializeField] private ObjectGenerator itemDrops;
+
+    [SerializeField] private AudioSource unitAudioSource;
+    [SerializeField] private AudioClip unitHurtAudio;
+
     public HealthSystem unitHealth;
     private void Awake()
     {
@@ -24,6 +28,8 @@ public class UnitHealth : MonoBehaviour
     }
     public void DamageEnemy(int amount)
     {
+        unitAudioSource.Play();
+
         unitHealth.DealDamage(amount, invincibilityFrames);
         if (unitHealth.IsDead())
         {

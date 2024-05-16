@@ -8,6 +8,7 @@ public class PlayerController2D : MonoBehaviour
     public static PlayerController2D instance;
 
     [SerializeField] private float movementSpeed = 5f;
+    [SerializeField] private AudioClip movementAudio;
 
     [HideInInspector] public Rigidbody2D rb;
     private Vector2 movementInput;
@@ -30,6 +31,9 @@ public class PlayerController2D : MonoBehaviour
     private void OnMove(InputValue inputValue)
     {
         movementInput = inputValue.Get<Vector2>();
+
+        AudioManager.instance.movementSource.clip = movementAudio;
+        AudioManager.instance.movementSource.Play();
     }
 
     private void FixedUpdate()
@@ -42,5 +46,10 @@ public class PlayerController2D : MonoBehaviour
 
         rb.velocity = smoothedMovementInput * movementSpeed;
         rb.angularVelocity = 0;
+
+        if (rb.velocity == Vector2.zero)
+        {
+            AudioManager.instance.movementSource.Stop();
+        }
     }
 }

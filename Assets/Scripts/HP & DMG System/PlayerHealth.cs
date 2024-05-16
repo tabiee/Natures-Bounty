@@ -9,6 +9,7 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField] private int maxPlayerHealth;
     [SerializeField] private float invincibilityFrames = 0.5f;
+    [SerializeField] private AudioClip playerHurtAudio;
 
     public Image healthBar;
     public HealthSystem playerHealth;
@@ -35,6 +36,9 @@ public class PlayerHealth : MonoBehaviour
     }
     public void DamagePlayer(int amount)
     {
+        AudioManager.instance.sfxSource.clip = playerHurtAudio;
+        AudioManager.instance.sfxSource.Play();
+
         playerHealth.DealDamage(amount, invincibilityFrames);
         canBeDamaged = false;
         StartCoroutine(DamagedInvincibility());

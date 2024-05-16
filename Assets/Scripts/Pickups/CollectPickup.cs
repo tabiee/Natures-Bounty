@@ -8,6 +8,8 @@ public class CollectPickup : MonoBehaviour, IInteractable
     public void EnterInteraction()
     {
         pickup.PickupUsed();
+        AudioManager.instance.sfxSource.clip = pickup.pickupSFX;
+        AudioManager.instance.sfxSource.Play();
         ReturnToPool();
     }
     private void ReturnToPool()

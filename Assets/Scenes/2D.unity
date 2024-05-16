@@ -188,6 +188,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 219605123783395730, guid: 6afad53d473cc064eb1276fd116fee08, type: 3}
+      propertyPath: sfxSource
+      value: 
+      objectReference: {fileID: 264757670}
     - target: {fileID: 1207590644963074145, guid: 6afad53d473cc064eb1276fd116fee08, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -235,12 +239,17 @@ PrefabInstance:
     - target: {fileID: 5333559562974397604, guid: 6afad53d473cc064eb1276fd116fee08, type: 3}
       propertyPath: text
       value: 
-      objectReference: {fileID: 1311916334}
+      objectReference: {fileID: 1247307399}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6afad53d473cc064eb1276fd116fee08, type: 3}
+--- !u!82 &264757670 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8462855758905957883, guid: 6afad53d473cc064eb1276fd116fee08, type: 3}
+  m_PrefabInstance: {fileID: 264757669}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &303800944 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3494626388634537787, guid: 6b9f9710be3f25641ae9bf59c8cc3f89, type: 3}
@@ -1224,6 +1233,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4883301179452587261, guid: 2858cb4bec2b9d44ea7da74845bc6539, type: 3}
   m_PrefabInstance: {fileID: 568076820}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1247307399 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4989763217778855739, guid: 709a4ae4fb3e8b64681b0ba142001f38, type: 3}
+  m_PrefabInstance: {fileID: 3673294159563446176}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1263292488
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1390,17 +1410,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1081195314906411160, guid: 932e9d03170cd4c4abfe85a339015402, type: 3}
   m_PrefabInstance: {fileID: 1263292488}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1311916334 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9098243879851207657, guid: 709a4ae4fb3e8b64681b0ba142001f38, type: 3}
-  m_PrefabInstance: {fileID: 3673294159563446176}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1371327488
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1866,6 +1875,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3731191839057907629, guid: 709a4ae4fb3e8b64681b0ba142001f38, type: 3}
+      propertyPath: m_TagString
+      value: ScoreUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3878354194723141869, guid: 709a4ae4fb3e8b64681b0ba142001f38, type: 3}
+      propertyPath: playerHurtAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: e85d0562caa65d84bb7a39937d2424aa, type: 3}
     - target: {fileID: 5181811182973115536, guid: 709a4ae4fb3e8b64681b0ba142001f38, type: 3}
       propertyPath: m_Name
       value: Canvas
