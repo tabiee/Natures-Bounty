@@ -242,6 +242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 8
+  movementAudio: {fileID: 8300000, guid: 0591cf21ce05d6e4992a8deaa38ecd60, type: 3}
   rb: {fileID: 0}
 --- !u!114 &6582031430232676792
 MonoBehaviour:
@@ -301,6 +302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashParticle: {fileID: 4990234020622451567}
+  dashAudio: {fileID: 8300000, guid: 5a5d7a6de14d31546941641b8bf917f3, type: 3}
   dashForce: 1000
   dashDuration: 0.5
   dashCooldown: 3
@@ -318,6 +320,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxPlayerHealth: 4
   invincibilityFrames: 2
+  playerHurtAudio: {fileID: 8300000, guid: e85d0562caa65d84bb7a39937d2424aa, type: 3}
   healthBar: {fileID: 1947268300639228863}
   canBeDamaged: 1
 --- !u!58 &1579004426276280715
@@ -464,6 +467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeSprite: {fileID: 8283165685051089335}
+  weaponSwapAudio: {fileID: 8300000, guid: 6b1f07e07101160419be7277eee135e7, type: 3}
   weaponSprites:
   - {fileID: 7128210294598063956}
   - {fileID: 1473716368881364833}
@@ -784,9 +788,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4362131484448102997, guid: bdd2107fe25ea8f4c9b24aebc97dda29, type: 3}
+      propertyPath: m_TagString
+      value: ScoreUI
+      objectReference: {fileID: 0}
     - target: {fileID: 5235365973098482024, guid: bdd2107fe25ea8f4c9b24aebc97dda29, type: 3}
       propertyPath: m_Name
-      value: PlayerCanvas
+      value: Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 5235365973098482024, guid: bdd2107fe25ea8f4c9b24aebc97dda29, type: 3}
       propertyPath: m_Layer

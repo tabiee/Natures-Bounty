@@ -36,8 +36,8 @@ public class PlayerHealth : MonoBehaviour
     }
     public void DamagePlayer(int amount)
     {
-        AudioManager.instance.sfxSource.clip = playerHurtAudio;
-        AudioManager.instance.sfxSource.Play();
+        AudioManager.instance.playerHurtSource.clip = playerHurtAudio;
+        AudioManager.instance.playerHurtSource.Play();
 
         playerHealth.DealDamage(amount, invincibilityFrames);
         canBeDamaged = false;
