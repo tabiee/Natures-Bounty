@@ -43,7 +43,7 @@ public class MainMenuButtons : MonoBehaviour
         }
     }
 
-    void StartGame()
+   public void StartGame()
     {
         SceneManager.LoadScene(LevelScene);
 

@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneChangeManager : MonoBehaviour
 {
-    public string MainMenuScene = "MainMenu";
-    public string LevelScene = "2DAapo";
+    public string MainMenuScene;
+    public string LevelScene;
 
     public void ChangeScene(string scene)
     {

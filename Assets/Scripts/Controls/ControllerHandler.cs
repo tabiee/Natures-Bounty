@@ -13,14 +13,12 @@ public class ControllerHandler : MonoBehaviour
 
     private void ControllerEnabled()
     {
-        Debug.Log("Controller plugged in");
         controllerIsConnected = true;
         Cursor.visible = false;
     }
 
     private void ControllerDisabled()
     {
-        Debug.Log("Controller not plugged in");
 
         Cursor.visible = true;
         controllerIsConnected = false;

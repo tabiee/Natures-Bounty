@@ -85,6 +85,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "MenuInteraction",
+                    "type": "Button",
+                    "id": "de71d19a-568f-4df5-90c1-2abb5215ec06",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -266,17 +275,6 @@
                 },
                 {
                     "name": "",
-                    "id": "4d957064-2aa1-45e6-a29c-d7c80070940e",
-                    "path": "<Keyboard>/enter",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyboardMouse",
-                    "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "250167d2-a8e2-47b2-96ef-c563e6a7fbee",
                     "path": "<Keyboard>/space",
                     "interactions": "",
@@ -322,7 +320,7 @@
                 {
                     "name": "",
                     "id": "3b385efe-0f9a-4fb4-8976-e32a303ebd49",
-                    "path": "<Gamepad>/buttonSouth",
+                    "path": "<Gamepad>/dpad/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -366,11 +364,33 @@
                 {
                     "name": "",
                     "id": "8119db77-ca7e-4f14-b9dd-345e3d0ad438",
-                    "path": "<Gamepad>/buttonSouth",
+                    "path": "<Gamepad>/dpad/left",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "ReverseSwap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2e4fcaf8-07f6-46e3-9fe2-95d3ce9fccf9",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MenuInteraction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "514a9a71-a1d6-4550-afd5-3b3f112ef9e9",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MenuInteraction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
