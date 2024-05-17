@@ -10,6 +10,7 @@ public class Dash : MonoBehaviour
     public float dashForce = 2f;
     public float dashDuration = 1f;
     public float dashCooldown = 3f;
+    public float dashInvincibility = 3f;
 
     private bool isDashing;
     private bool isOnCooldown;
@@ -38,14 +39,19 @@ public class Dash : MonoBehaviour
         dashParticle.SetActive(true);
 
         StartCoroutine(DashTimer());
+        StartCoroutine(InvincibilityFrames());
         StartCoroutine(StartCooldown());
     }
     IEnumerator DashTimer()
     {
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
-        PlayerHealth.instance.canBeDamaged = true;
         dashParticle.SetActive(false);
+    }
+    IEnumerator InvincibilityFrames()
+    {
+        yield return new WaitForSeconds(dashInvincibility);
+        PlayerHealth.instance.canBeDamaged = true;
     }
 
     IEnumerator StartCooldown()
