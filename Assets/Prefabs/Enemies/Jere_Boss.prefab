@@ -299,10 +299,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileData:
-  - {fileID: 11400000, guid: 083520f54b1856940be70d42eb545d9d, type: 2}
+  - {fileID: 11400000, guid: 9d5a834d960594849ac540c43c61f7c9, type: 2}
+  - {fileID: 11400000, guid: 943978062d95b6d4abdf3eb7d35e1567, type: 2}
+  - {fileID: 11400000, guid: b5e04e8b72a21d74f8a60b8b00d715b0, type: 2}
   projectileSpawner: {fileID: 3271387340797118751}
   shooterPosition: {fileID: 0}
-  cycleProjectiles: 0
+  cycleProjectiles: 1
   targetPosition: {fileID: 0}
   canAttack: 0
 --- !u!114 &3271387340797118751
