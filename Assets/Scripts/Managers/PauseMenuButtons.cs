@@ -76,6 +76,7 @@ public class PauseMenuButtons : MonoBehaviour
             {
                 if (!menuIsOpen)
                 {
+                    Debug.Log("Pausemenu");
                     PauseGame();
                     Cursor.visible = false;
                 }
