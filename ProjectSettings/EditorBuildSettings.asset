@@ -21,21 +21,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Rooms/Room 2.unity
     guid: a681043c15edaf24685d25e1f7743ac5
   - enabled: 1
-    path: Assets/Scenes/Rooms/Room 3.unity
-    guid: 9766f99df50c3af4aacb1618e43fcadb
-  - enabled: 1
-    path: Assets/Scenes/Rooms/Room 4.unity
-    guid: 13ba8585ff09d644f98f8884457b285e
-  - enabled: 1
-    path: Assets/Scenes/Rooms/Room 5.unity
-    guid: d6c782e6997808044bf7ade37273254b
-  - enabled: 1
-    path: Assets/Scenes/Rooms/Room 6.unity
-    guid: e5b5343e5e192864d80755b6d42d0b34
-  - enabled: 1
-    path: Assets/Scenes/Rooms/Room 7.unity
-    guid: c3c64c3391318e14fa6cbaa9a553cb83
-  - enabled: 1
     path: Assets/Scenes/Rooms/Boss.unity
     guid: 43db69897ddcf2b4eb37b1f065b61f5b
   m_configObjects: {}

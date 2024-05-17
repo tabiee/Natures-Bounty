@@ -339,7 +339,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d99547904da712419ab7553a4f27acf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabPool: []
+  prefabPool:
+  - {fileID: 7365580245807429125, guid: 582f1374d3a939e4294e3640442938e9, type: 3}
   amount: 1
   spawnRange: 2
   bounceForce: 0.3
