@@ -295,11 +295,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4607863509145403330, guid: 83b39f24688117a47a28a78134d10fa4, type: 3}
       propertyPath: scenes.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4607863509145403330, guid: 83b39f24688117a47a28a78134d10fa4, type: 3}
       propertyPath: scenes.Array.data[1]
-      value: Room 0
+      value: Room 0Reloaded
       objectReference: {fileID: 0}
     - target: {fileID: 8634159692702220473, guid: 83b39f24688117a47a28a78134d10fa4, type: 3}
       propertyPath: m_Name
@@ -1201,7 +1201,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c2eba5c8debe72746b2b45c07fe92542, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0

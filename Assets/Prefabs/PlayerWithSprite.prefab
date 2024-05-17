@@ -306,7 +306,7 @@ MonoBehaviour:
   dashForce: 1000
   dashDuration: 0.5
   dashCooldown: 3
-  dashInvincibility: 1
+  dashInvincibility: 2
 --- !u!114 &3878354194723141869
 MonoBehaviour:
   m_ObjectHideFlags: 0

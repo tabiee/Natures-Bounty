@@ -20,8 +20,12 @@ public class PauseMenuButtons : MonoBehaviour
     public string MainMenuScene = "MainMenu";
     public string FirstLevel = "Room 0";
 
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject mainCam;
+    [SerializeField] private GameObject eventsys;
+    [SerializeField] private GameObject gamemanager;
+    
 
- 
 
 
 
@@ -35,6 +39,12 @@ public class PauseMenuButtons : MonoBehaviour
         continueButton.onClick.AddListener(ContinueGame);
         restartButton.onClick.AddListener(RestartGame);
         exitButton.onClick.AddListener(ExitGame);
+        player = GameObject.Find("PlayerWithSprite");
+        mainCam = GameObject.Find("Main Camera");
+        eventsys = GameObject.Find("EventSystem");
+        gamemanager = GameObject.Find("GameManager");
+
+
 
     }
 
@@ -121,6 +131,24 @@ public class PauseMenuButtons : MonoBehaviour
 
     public void ExitGame()
     {
+        
+      
+            
+
+            Destroy(player);
+        
+
+            Destroy(mainCam);
+        
+
+            Destroy(eventsys);
+
+        
+ 
+            Destroy(gamemanager);
+
+        
+
         Debug.Log("Game Exited");
         SceneManager.LoadScene(MainMenuScene);
         Menu.SetActive(false);
