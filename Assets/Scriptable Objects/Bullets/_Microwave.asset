@@ -17,13 +17,13 @@ MonoBehaviour:
   audioClip: {fileID: 8300000, guid: 1fc5ac410835e374c90f3d44a2b36db4, type: 3}
   weaponSprite: {fileID: 21300000, guid: 0663765cbe310f04c9b026aa3acc74e0, type: 3}
   rateOfFire: 1
-  projectilesPerBurst: 5
+  projectilesPerBurst: 6
   angleSpread: 60
   burstCount: 1
   timeBetweenBursts: 0
   stagger: 0
   oscillate: 0
-  projectileSpeed: 1
-  projectileLifetime: 4
+  projectileSpeed: 2
+  projectileLifetime: 3
   projectileShape: {x: 1, y: 1, z: 1}
-  damageDealt: 3
+  damageDealt: 5
